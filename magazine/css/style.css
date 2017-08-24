@@ -5,11 +5,14 @@ body {
 nav ul li {
     display: inline-block;
     padding: 15px;
+    border-right : solid;
     /* float: left; */
 }
 
 nav ul li:hover {
     background-color: #4f4f4f;
+    border: solid;
+
 }
 
 nav {
@@ -22,7 +25,13 @@ nav ul {
     margin: 0;
     overflow: hidden;
     padding: 0;
-    background-color: gray;
+    background-color: #3333ff;
+}
+ article p{
+	background-color: #3333ff;
+	height: 30px;
+	text-align: center;
+	padding-top: 15px
 }
 
 main {
@@ -36,7 +45,7 @@ main {
 article {
     display: inline-block;
     width: 30%;
-    border: 5px solid whitesmoke;
+    border: 5px solid black;
     padding: 10px;
 }
 
@@ -49,8 +58,14 @@ aside {
     width: 19%;
     height: 95%;
     /* min-height: 80%; */
-    border: 0.2em solid blue;
-    margin-top: 2.5em;
+    
+   
+}
+
+section p {
+	background-color: #9999ff;
+	border: solid grey; 
+	margin-top: 40px;
 }
 
 aside div {
@@ -64,7 +79,7 @@ hr {
 
 .Main_Title {
     font-size: 2em;
-    background-color: #f0f0d0;
+    background-color: #000066;
 }
 
 .News_Section {

@@ -1,0 +1,37 @@
+html{padding:10px; font-family: "Ubuntu"}
+
+
+.button{
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.37);
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 0.698) inset, 0 1px 0 0 rgba(0, 0, 0, 0.075);
+    color: #595959;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    margin: 0;
+    padding: 8px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #FFFFFF;
+    transition: all 0.2s ease 0s;
+    vertical-align: middle;
+}
+.button:hover {
+    background-color: #F6F6F6;
+    outline: medium none;
+}
+.button:focus{
+    outline: medium none;
+}
+.button:active, .button.active{
+    background-color: #DDDDDD;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075) inset;
+    outline: medium none;
+    transition: none 0s ease 0s;
+}

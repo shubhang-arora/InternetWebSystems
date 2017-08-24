@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<button class="button" onclick="circle()" type="button">Circle</button>
+<button class="button" onclick="square()" type="button">Square</button>
+<button class="button" onclick="triangle()" type="button">triangle</button>
+<button class="button" onclick="rectangle()" type="button">Rectangle</button>
+<br>
+<div id="area"></div>
+
+<div id="permimeter"></div>
+<canvas id="myCanvas" width="500" height="200" style="border:1px solid #000000;"></canvas><br>
+
+<br>
+<br>
+</body>
+<script type="text/javascript">
+	function circle(){
+	var radius = prompt("Enter radius of circle", "3");
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	ctx.clearRect(0, 0, c.width, c.height);
+	ctx.beginPath();
+	ctx.arc(95,50,40,0,2*Math.PI);
+	ctx.stroke();
+	document.getElementById("area").innerHTML = "Area : "+Math.PI*radius*radius;
+	document.getElementById("permimeter").innerHTML = "permimeter : "+Math.PI*2*radius;
+	}
+
+	function square() {
+		var side = prompt("Enter Side of Square", "3");
+		var c=document.getElementById("myCanvas");
+		var ctx=c.getContext("2d");
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.beginPath();
+		ctx.rect(20,20,20,20);
+		ctx.stroke();
+		document.getElementById("area").innerHTML = "Area : "+side*side;
+		document.getElementById("permimeter").innerHTML = "permimeter : "+ 2*side;
+	}
+
+	function triangle() {
+		var base = prompt("Enter Base of triangle", "3");
+		var height = prompt("Enter Height of triangle", "3");
+		var side = prompt("Enter remaining side of triangle", "3");
+		var c=document.getElementById("myCanvas");
+		var ctx = c.getContext('2d');
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.beginPath();
+            var sWidth = c.width;
+            var sHeight = c.height;
+            var path=new Path2D();
+            path.moveTo((sWidth/2)+50,sHeight/2);
+            path.lineTo((sWidth/2),(sHeight/2)-50);
+            path.lineTo((sWidth/2)-50,sHeight/2);
+            ctx.fill(path);
+            document.getElementById("area").innerHTML = "Area : "+0.5*base*height;
+		document.getElementById("permimeter").innerHTML = "permimeter : "+ height+base+side;
+	}
+
+	function rectangle(){
+		var height = prompt("Enter Height of reactabgle", "3");
+		var width = prompt("Enter Width of reactabgle", "3");
+		var c=document.getElementById("myCanvas");
+		var ctx=c.getContext("2d");
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.beginPath();
+		ctx.rect(width,height,width,height);
+		ctx.stroke();
+		document.getElementById("area").innerHTML = "Area : "+height*width;
+		document.getElementById("permimeter").innerHTML = "permimeter : "+ 2*(height+width);
+	}
+</script>
+</html>
