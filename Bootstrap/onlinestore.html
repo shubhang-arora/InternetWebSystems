@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shopper - Online Store</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+	  background-color: #0A1612;
+	  font: 100 15px/1.1 'Roboto Condensed', Verdana, sans-serif;
+    }
+    
+     .jumbotron {
+      margin-bottom: 0;
+	  background-color: #F7CE3E;
+    }
+   
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+	
+	.panel-default > .panel-heading {
+		background-color: #1A2930;
+		color: white;
+		font: 100 15px/1.1 'Roboto Condensed', Verdana, sans-serif;
+	}
+	
+	.images {}
+	
+	.popover_details {}
+	
+	.dummyNav {}
+	
+	table {
+		margin-left: 10px;
+		width: 97%;
+		margin-top: 10px;
+		border-collapse: collapse;
+	}
+
+	td {
+		width: 300px;
+		font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+		font-size: 15px;
+		font-style: normal;
+		font-variant: normal;
+		font-weight: 100;
+		line-height: 15.4px;
+		text-align: center;
+		padding: 7px;
+		border-bottom: 1px solid #ddd;
+	}
+
+	th {
+		background-color: #1A2930;
+		color: white;
+		text-align: center;
+		font: 100 16px/1.1 'Roboto Condensed', Verdana, sans-serif;
+		padding: 10px;
+		border-bottom: 1px solid #ddd;
+	}
+
+	tr:hover {
+		background-color: #f5f5f5
+	}
+	
+	a: visited{
+		outline: none;
+	}	
+	
+  </style>
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#" onclick = "productDisplay(0)">Books</a></li>
+        <li><a href="#" onclick = "productDisplay(1)">Laptops</a></li>
+        <li><a href="#" onclick = "productDisplay(2)">Smartphones</a></li>
+        <li><a href="#" onclick = "productDisplay(3)">Bags</a></li>
+        <li><a href="#" onclick = "productDisplay(4)">Speakers</a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+		<li><a class = "dummyNav" href="#" onclick = "dummy()"></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" onclick = "addCategory()"><span class="glyphicon glyphicon-plus"></span> Add Category</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#myModal" onclick = "show_in_cart()"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-default" onclick = "add_to_cart(0)">
+        <div class="panel-heading">Elon Musk by Ashlee Vance</div>
+        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/elon_musk.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+        <div class="panel-footer">Price - Rs. 454 <button>Add to cart</button></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-default" onclick = "add_to_cart(1)">
+        <div class="panel-heading">Steve Jobs by Walter Issacson</div>
+        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/steve_jobs.jpg" class="img-responsive" style="width: 100%" alt="Image"></a></div>
+        <div class="panel-footer">Price - Rs. 329 <button>Add to cart</button></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-default" onclick = "add_to_cart(2)">
+        <div class="panel-heading">The Fault in our Stars by John Green</div>
+        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/fault_stars.jpg" class="img-responsive" style="width: 100%" alt="Image"></a></div>
+        <div class="panel-footer">Price - Rs. 240 <button>Add to cart</button></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-default" onclick = "add_to_cart(3)">
+        <div class="panel-heading">Angels and Demons by Dan Brown</div>
+        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/angels_demons.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+        <div class="panel-footer">Price - Rs. 189 <button>Add to cart</button></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-default" onclick = "add_to_cart(4)">
+        <div class="panel-heading">Secret of the Nagas by Amish Tripathi</div>
+        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/secret_nagas.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+        <div class="panel-footer">Price - Rs. 179 <button>Add to cart</button></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-default" onclick = "add_to_cart(5)">
+        <div class="panel-heading">Kane and Abel by Jeffrey Archer</div>
+        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/kane_abel.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+        <div class="panel-footer">Price - Rs. 323 <button>Add to cart</button></div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title" style = "font: 100 16px/1.1 'Roboto Condensed', Verdana, sans-serif;">Your Cart</h4>
+        </div>
+        <div class="modal-body">
+			<table id="myTable">
+				<tr>
+					<th>Name</th>
+					
+					<th>Qty.</th>
+					
+					<th>Price</th>
+					
+					<th>Total</th>
+				</tr>
+			</table>
+        </div>
+        <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal" onclick = "reset_cart()">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<font style = "font: 100 15px/1.1 'Roboto Condensed', Verdana, sans-serif;">
+<footer class="footer">
+      <div class="container">
+        <span class="text-muted">Shopping Store</span>
+      </div>
+    </footer>
+</font>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+
+var booksArray = ["Books/elon_musk.jpg",
+				  "Books/steve_jobs.jpg",
+				  "Books/fault_stars.jpg",
+				  "Books/angels_demons.jpg",
+				  "Books/secret_nagas.jpg",
+				  "Books/kane_abel.jpg"
+				];
+
+var laptopsArray = ["Laptops/xps_13.jpg",
+				    "Laptops/macbook_pro.jpg",
+				    "Laptops/predator.jpg",
+				    "Laptops/zenbook.jpg",
+				    "Laptops/gram.jpg",
+				    "Laptops/spectre.jpg"
+				];
+
+var smartphonesArray = ["Smartphones/galaxy_s8.jpeg",
+						"Smartphones/iphone_7plus.jpg",
+						"Smartphones/lg_g6.jpeg",
+						"Smartphones/moto_x4.jpg",
+						"Smartphones/xperia_xzs.jpg",
+						"Smartphones/pixel_xl.jpeg"
+							];
+
+var bagsArray = ["Bags/herschel_heritage.jpg",
+				 "Bags/herschel_retreat.jpg",
+				 "Bags/tommy_hilfiger.jpg",
+				 "Bags/peak_design.jpeg",
+				 "Bags/timbuk2_rogue.jpg",
+		 		 "Bags/timbuk2_uptown.jpg"
+				];
+
+var speakersArray = ["Speakers/jbl_flip.jpg",
+				     "Speakers/moto_deck.png",
+				     "Speakers/bose_soundlink.jpg",
+				     "Speakers/jbl_pulse.jpg",
+				     "Speakers/ue_boom_2.jpg",
+		 		     "Speakers/bose_soundtouch.jpg"
+				    ];
+
+var imageArray = ["books", "laptopsArray", "smartphonesArray", "bagsArray", "speakersArray"];
+var bookHeadings = [ "Elon Musk by Ashlee Vance",
+					 "Steve Jobs by Walter Issacson",
+					 "The Fault in our Stars by John Green",
+					 "Angels and Demons by Dan Brown",
+					 "Secret of the Nagas by Amish Tripathi",
+					 "Kane and Abel by Jeffrey Archer"
+					];
+
+var laptopHeadings = [ "Dell XPS 13",
+					 "Apple Macbook Pro",
+					 "Acer Predator 21x",
+					 "Asus Zenbook Infinity",
+					 "LG Gram",
+					 "HP Spectre"
+					];
+					
+var smartphoneHeadings = [ "Samsung Galaxy S8",
+					 "Apple iPhone 7 Plus",
+					 "LG G6",
+					 "Lenovo Moto X4",
+					 "Xperia XZS",
+					 "Google Pixel XL"
+					];
+					
+var bagHeadings = [  "Herschel Supply Co. Heritage Backpack",
+					 "Herschel Supply Co. Retreat Backpack",
+					 "Tommy Hilfiger Backpack",
+					 "Peak Design Everyday Backpack",
+					 "Timbuk2 Rogue Backpack",
+					 "Timbuk2 Uptown Backpack"
+					];
+					
+var speakerHeadings = ["JBL Flip 4",
+					 "Motorola Moto Deck",
+					 "BOSE Soundlink Mini",
+					 "JBL Pulse",
+					 "UE Boom 2",
+					 "BOSE Soundtouch 10"
+					];
+					
+var bookPrice = ["Price - Rs. 454 <button>Add to cart</button>", "Price - Rs. 329 <button>Add to cart</button>", "Price - Rs. 240", "Price - Rs. 189 <button>Add to cart</button>", "Price - Rs. 179 <button>Add to cart</button>", "Price - Rs. 323 <button>Add to cart</button>"];
+var laptopPrice = ["Price - Rs. 1,15,000 <button>Add to cart</button>", "Price - Rs. 2,18,990 <button>Add to cart</button>", "Price - Rs. 5,77,470 <button>Add to cart</button>", "Price - Rs. 64,200 <button>Add to cart</button>", "Price - Rs. 83,230 <button>Add to cart</button>", "Price - Rs. 54,600 <button>Add to cart</button>"];
+var smartphonePrice = ["Price - Rs. 57,900 <button>Add to cart</button>", "Price - Rs. 67,999 <button>Add to cart</button>", "Price - Rs. 36,990 <button>Add to cart</button>", "Price - Rs. 33,900 <button>Add to cart</button>", "Price - Rs. 39,990 <button>Add to cart</button>", "Price - Rs. 54,000 <button>Add to cart</button>"];
+var bagPrice = ["Price - Rs. 5,952 <button>Add to cart</button>", "Price - Rs. 8,024 <button>Add to cart</button>", "Price - Rs. 1,250 <button>Add to cart</button>", "Price - Rs. 16,045 <button>Add to cart</button>", "Price - Rs. 11,986 <button>Add to cart</button>", "Price - Rs. 12,899 <button>Add to cart</button>"];
+var speakerPrice = ["Price - Rs. 8,999 <button>Add to cart</button>", "Price - Rs. 7,199 <button>Add to cart</button>", "Price - Rs. 16,200 <button>Add to cart</button>", "Price - Rs. 15,399 <button>Add to cart</button>", "Price - Rs. 12,555 <button>Add to cart</button>", "Price - Rs. 19,013 <button>Add to cart</button>"];
+
+var laptopPrices = ["Price - Rs. 115000 <button>Add to cart</button>", "Price - Rs. 218990 <button>Add to cart</button>", "Price - Rs. 577470 <button>Add to cart</button>", "Price - Rs. 64200 <button>Add to cart</button>", "Price - Rs. 83230 <button>Add to cart</button>", "Price - Rs. 54600 <button>Add to cart</button>"];
+var smartphonePrices = ["Price - Rs. 57900 <button>Add to cart</button>", "Price - Rs. 67999 <button>Add to cart</button>", "Price - Rs. 36990 <button>Add to cart</button>", "Price - Rs. 33900 <button>Add to cart</button>", "Price - Rs. 39990 <button>Add to cart</button>", "Price - Rs. 54000 <button>Add to cart</button>"];
+var bagPrices = ["Price - Rs. 5952 <button>Add to cart</button>", "Price - Rs. 8024 <button>Add to cart</button>", "Price - Rs. 1250 <button>Add to cart</button>", "Price - Rs. 16045 <button>Add to cart</button>", "Price - Rs. 11986 <button>Add to cart</button>", "Price - Rs. 12899 <button>Add to cart</button>"];
+var speakerPrices = ["Price - Rs. 8999 <button>Add to cart</button>", "Price - Rs. 7199 <button>Add to cart</button>", "Price - Rs. 16200 <button>Add to cart</button>", "Price - Rs. 15399 <button>Add to cart</button>", "Price - Rs. 12555 <button>Add to cart</button>", "Price - Rs. 19013 <button>Add to cart</button>"];
+
+var mbookPrice = ["Price - Rs. 454", "Price - Rs. 329", "Price - Rs. 240", "Price - Rs. 189", "Price - Rs. 179", "Price - Rs. 323"];
+var mlaptopPrice = ["Price - Rs. 1,15,000", "Price - Rs. 2,18,990", "Price - Rs. 5,77,470", "Price - Rs. 64,200", "Price - Rs. 83,230", "Price - Rs. 54,600"];
+var msmartphonePrice = ["Price - Rs. 57,900", "Price - Rs. 67,999", "Price - Rs. 36,990", "Price - Rs. 33,900", "Price - Rs. 39,990", "Price - Rs. 54,000"];
+var mbagPrice = ["Price - Rs. 5,952", "Price - Rs. 8,024", "Price - Rs. 1,250", "Price - Rs. 16,045", "Price - Rs. 11,986", "Price - Rs. 12,899"];
+var mspeakerPrice = ["Price - Rs. 8,999", "Price - Rs. 7,199", "Price - Rs. 16,200", "Price - Rs. 15,399", "Price - Rs. 12,555", "Price - Rs. 19,013"];
+var mlaptopPrices = ["Price - Rs. 115000", "Price - Rs. 218990", "Price - Rs. 577470", "Price - Rs. 64200", "Price - Rs. 83230", "Price - Rs. 54600"];
+var msmartphonePrices = ["Price - Rs. 57900", "Price - Rs. 67999", "Price - Rs. 36990", "Price - Rs. 33900", "Price - Rs. 39990", "Price - Rs. 54000"];
+var mbagPrices = ["Price - Rs. 5952", "Price - Rs. 8024", "Price - Rs. 1250", "Price - Rs. 16045", "Price - Rs. 11986", "Price - Rs. 12899"];
+var mspeakerPrices = ["Price - Rs. 8999", "Price - Rs. 7199", "Price - Rs. 16200", "Price - Rs. 15399", "Price - Rs. 12555", "Price - Rs. 19013"];
+
+
+var current_category = 0;
+
+function productDisplay(category)	{	
+	current_category = category;
+	var panels = document.getElementsByClassName('images');
+	var price = document.getElementsByClassName('panel-footer');
+	var headings = document.getElementsByClassName('panel-heading');
+	var popover = document.getElementsByClassName('popover_details');
+	for(i = 0 ; i < panels.length ; i++)
+	{
+		switch(category)
+		{
+			case 0: panels[i].src = booksArray[i];
+					headings[i].innerHTML = bookHeadings[i];
+					price[i].innerHTML = bookPrice[i];
+					popover[i].setAttribute('data-content','GST - N/A');
+					break;
+			case 1: panels[i].src = laptopsArray[i];
+					headings[i].innerHTML = laptopHeadings[i];
+					price[i].innerHTML = laptopPrice[i];
+					popover[i].setAttribute('data-content','GST - 18%');
+					break;
+			case 2: panels[i].src = smartphonesArray[i];
+					headings[i].innerHTML = smartphoneHeadings[i];
+					price[i].innerHTML = smartphonePrice[i];
+					popover[i].setAttribute('data-content','GST - 12%');
+					break;
+			case 3: panels[i].src = bagsArray[i];
+					headings[i].innerHTML = bagHeadings[i];
+					price[i].innerHTML = bagPrice[i];
+					popover[i].setAttribute('data-content','GST - 28%');
+					break;
+			case 4: panels[i].src = speakersArray[i];
+					headings[i].innerHTML = speakerHeadings[i];
+					price[i].innerHTML = speakerPrice[i];
+					popover[i].setAttribute('data-content','GST - 18%');
+					break;
+		}
+		
+	}
+}
+
+var new_category;
+var counter = 0;
+
+function addCategory(){
+	new_category = prompt("Please enter a new category:", "Shoes");
+	var category = document.getElementsByClassName('dummyNav');
+	category[counter].innerHTML = new_category;
+	counter++;
+}
+
+function dummy(){
+	var panels = document.getElementsByClassName('images');
+	var headings = document.getElementsByClassName('panel-heading');
+	var popover = document.getElementsByClassName('popover_details');
+	for(i = 0 ; i < panels.length ; i++)
+	{
+		panels[i].src = 'https://placehold.it/150x80?text=IMAGE';
+		headings[i].innerHTML = 'Product #' + (i+1);
+		popover.title = bookPrice[i];
+		popover[i].setAttribute('data-content','GST - N/A');		
+	}
+}
+
+var cart = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+function add_to_cart(product){
+
+	switch(current_category)
+		{
+			case 0: cart[product]++;
+					alert("Item added to cart!");
+					break;
+			case 1: cart[product + 6]++;
+					alert("Item added to cart!");
+					break;
+			case 2: cart[product + 12]++;
+					alert("Item added to cart!");
+					break;
+			case 3: cart[product + 18]++;
+					alert("Item added to cart!");
+					break;
+			case 4: cart[product + 24]++;
+					alert("Item added to cart!");
+					break;
+		}
+}
+
+var final_total = 0;
+
+function show_in_cart(){
+
+	var table = document.getElementById("myTable");
+	var row;
+	var name;
+	var qty;
+	var price;
+	var total;
+	for(var i = 0 ; i < cart.length ; i++)
+	{
+		if(cart[i] > 0)
+		{
+			row = table.insertRow(1);
+			name = row.insertCell(0);
+			
+			qty = row.insertCell(1);
+			
+			price = row.insertCell(2);
+			total = row.insertCell(3);
+			
+			var category = Math.floor(i/5);
+			var product = i%5;
+			
+			<!--Name of each product-->
+			switch(category)
+			{
+				case 0: name.innerHTML = bookHeadings[product];
+					    break;
+				case 1: name.innerHTML = laptopHeadings[product];
+						break;
+				case 2: name.innerHTML = smartphoneHeadings[product];
+						break;
+				case 3: name.innerHTML = bagHeadings[product];
+						break;
+				case 4: name.innerHTML = speakerHeadings[product];
+						break;
+			}
+			
+			<!--Print the quantity of each product-->
+			qty.innerHTML = cart[i];
+			
+			<!--Price of each product-->
+			switch(category)
+			{
+				case 0: price.innerHTML = mbookPrice[product].substr(12);
+					    break;
+				case 1: price.innerHTML = mlaptopPrice[product].substr(12);
+						break;
+				case 2: price.innerHTML = msmartphonePrice[product].substr(12);
+						break;
+				case 3: price.innerHTML = mbagPrice[product].substr(12);
+						break;
+				case 4: price.innerHTML = mspeakerPrice[product].substr(12);
+						break;
+			}
+			
+			
+			
+			<!--Print the total amount-->
+			switch(category)
+			{
+				case 0: total.innerHTML = cart[i]*parseInt(bookPrice[product].substr(12));
+						final_total = final_total + (cart[i]*parseInt(bookPrice[product].substr(12)));
+					    break;
+				case 1: total.innerHTML = cart[i]*parseInt(laptopPrices[product].substr(12));
+						final_total = final_total + (cart[i]*parseInt(laptopPrices[product].substr(12)));
+						break;
+				case 2: total.innerHTML = cart[i]*parseInt(smartphonePrices[product].substr(12));
+						final_total = final_total + (cart[i]*parseInt(smartphonePrices[product].substr(12)));
+						break;
+				case 3: total.innerHTML = cart[i]*parseInt(bagPrices[product].substr(12));
+						final_total = final_total + (cart[i]*parseInt(bagPrices[product].substr(12)));
+						break;
+				case 4: total.innerHTML = cart[i]*parseInt(speakerPrices[product].substr(12));
+						final_total = final_total + (cart[i]*parseInt(speakerPrices[product].substr(12)));
+						break;
+			}
+		}
+	}
+	row = table.insertRow(-1);
+	name = row.insertCell(0);
+	qty = row.insertCell(1);
+	price = row.insertCell(2);
+
+	total = row.insertCell(3);
+	if(final_total > 0)
+	{
+		
+		total.innerHTML = final_total;
+	}
+	else
+	{
+		price.innerHTML = "Cart Empty!";
+	}
+	final_total = 0;
+}
+
+function reset_cart(){
+	var table = document.getElementById('myTable');
+	while(table.rows.length > 0){
+		table.deleteRow(1);
+	}
+}
+</script>
+
+</body>
+</html>
