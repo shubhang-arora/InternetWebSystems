@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/question/topic/{topic}', 'QuestionController@loadTopic');
+Route::post('/question/comment/store', 'QuestionController@storeComment');
+Route::get('/question/{question}/comments', 'QuestionController@getComments');
+Route::post('/question', 'QuestionController@storeQuestion');

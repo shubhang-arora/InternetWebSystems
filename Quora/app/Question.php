@@ -13,4 +13,9 @@ class Question extends Model
       'answer',
        'upvote'
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
