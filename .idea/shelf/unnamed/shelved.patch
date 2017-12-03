@@ -1,0 +1,988 @@
+Index: Bootstrap/onlinestore.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <title>Shopper - Online Store</title>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>\n  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n  <style>\n    .navbar {\n      margin-bottom: 50px;\n      border-radius: 0;\n\t  background-color: #0A1612;\n\t  font: 100 15px/1.1 'Roboto Condensed', Verdana, sans-serif;\n    }\n    \n     .jumbotron {\n      margin-bottom: 0;\n\t  background-color: #F7CE3E;\n    }\n   \n    footer {\n      background-color: #f2f2f2;\n      padding: 25px;\n    }\n\t\n\t.panel-default > .panel-heading {\n\t\tbackground-color: #1A2930;\n\t\tcolor: white;\n\t\tfont: 100 15px/1.1 'Roboto Condensed', Verdana, sans-serif;\n\t}\n\t\n\t.images {}\n\t\n\t.popover_details {}\n\t\n\t.dummyNav {}\n\t\n\ttable {\n\t\tmargin-left: 10px;\n\t\twidth: 97%;\n\t\tmargin-top: 10px;\n\t\tborder-collapse: collapse;\n\t}\n\n\ttd {\n\t\twidth: 300px;\n\t\tfont-family: \"Courier New\", Courier, \"Lucida Sans Typewriter\", \"Lucida Typewriter\", monospace;\n\t\tfont-size: 15px;\n\t\tfont-style: normal;\n\t\tfont-variant: normal;\n\t\tfont-weight: 100;\n\t\tline-height: 15.4px;\n\t\ttext-align: center;\n\t\tpadding: 7px;\n\t\tborder-bottom: 1px solid #ddd;\n\t}\n\n\tth {\n\t\tbackground-color: #1A2930;\n\t\tcolor: white;\n\t\ttext-align: center;\n\t\tfont: 100 16px/1.1 'Roboto Condensed', Verdana, sans-serif;\n\t\tpadding: 10px;\n\t\tborder-bottom: 1px solid #ddd;\n\t}\n\n\ttr:hover {\n\t\tbackground-color: #f5f5f5\n\t}\n\t\n\ta: visited{\n\t\toutline: none;\n\t}\t\n\t\n  </style>\n</head>\n<body>\n\n\n\n<nav class=\"navbar navbar-inverse\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#myNavbar\">\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>                        \n      </button>\n    </div>\n    <div class=\"collapse navbar-collapse\" id=\"myNavbar\">\n      <ul class=\"nav navbar-nav\">\n        <li><a href=\"#\" onclick = \"productDisplay(0)\">Books</a></li>\n        <li><a href=\"#\" onclick = \"productDisplay(1)\">Laptops</a></li>\n        <li><a href=\"#\" onclick = \"productDisplay(2)\">Smartphones</a></li>\n        <li><a href=\"#\" onclick = \"productDisplay(3)\">Bags</a></li>\n        <li><a href=\"#\" onclick = \"productDisplay(4)\">Speakers</a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n\t\t<li><a class = \"dummyNav\" href=\"#\" onclick = \"dummy()\"></a></li>\n      </ul>\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li><a href=\"#\" onclick = \"addCategory()\"><span class=\"glyphicon glyphicon-plus\"></span> Add Category</a></li>\n        <li><a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\" onclick = \"show_in_cart()\"><span class=\"glyphicon glyphicon-shopping-cart\"></span> Cart</a></li>\n      </ul>\n    </div>\n  </div>\n</nav>\n\n<div class=\"container\">    \n  <div class=\"row\">\n    <div class=\"col-sm-4\">\n      <div class=\"panel panel-default\" onclick = \"add_to_cart(0)\">\n        <div class=\"panel-heading\">Elon Musk by Ashlee Vance</div>\n        <div class=\"panel-body\"><a class = \"popover_details\" href=\"#\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"auto\" data-content=\"GST - N/A\"><img class = \"images\" src=\"Books/elon_musk.jpg\" class=\"img-responsive\" style=\"width:100%\" alt=\"Image\"></a></div>\n        <div class=\"panel-footer\">Price - Rs. 454 <button>Add to cart</button></div>\n      </div>\n    </div>\n    <div class=\"col-sm-4\"> \n      <div class=\"panel panel-default\" onclick = \"add_to_cart(1)\">\n        <div class=\"panel-heading\">Steve Jobs by Walter Issacson</div>\n        <div class=\"panel-body\"><a class = \"popover_details\" href=\"#\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"auto\" data-content=\"GST - N/A\"><img class = \"images\" src=\"Books/steve_jobs.jpg\" class=\"img-responsive\" style=\"width: 100%\" alt=\"Image\"></a></div>\n        <div class=\"panel-footer\">Price - Rs. 329 <button>Add to cart</button></div>\n      </div>\n    </div>\n    <div class=\"col-sm-4\"> \n      <div class=\"panel panel-default\" onclick = \"add_to_cart(2)\">\n        <div class=\"panel-heading\">The Fault in our Stars by John Green</div>\n        <div class=\"panel-body\"><a class = \"popover_details\" href=\"#\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"auto\" data-content=\"GST - N/A\"><img class = \"images\" src=\"Books/fault_stars.jpg\" class=\"img-responsive\" style=\"width: 100%\" alt=\"Image\"></a></div>\n        <div class=\"panel-footer\">Price - Rs. 240 <button>Add to cart</button></div>\n      </div>\n    </div>\n  </div>\n</div><br>\n\n<div class=\"container\">    \n  <div class=\"row\">\n    <div class=\"col-sm-4\">\n      <div class=\"panel panel-default\" onclick = \"add_to_cart(3)\">\n        <div class=\"panel-heading\">Angels and Demons by Dan Brown</div>\n        <div class=\"panel-body\"><a class = \"popover_details\" href=\"#\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"auto\" data-content=\"GST - N/A\"><img class = \"images\" src=\"Books/angels_demons.jpg\" class=\"img-responsive\" style=\"width:100%\" alt=\"Image\"></a></div>\n        <div class=\"panel-footer\">Price - Rs. 189 <button>Add to cart</button></div>\n      </div>\n    </div>\n    <div class=\"col-sm-4\"> \n      <div class=\"panel panel-default\" onclick = \"add_to_cart(4)\">\n        <div class=\"panel-heading\">Secret of the Nagas by Amish Tripathi</div>\n        <div class=\"panel-body\"><a class = \"popover_details\" href=\"#\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"auto\" data-content=\"GST - N/A\"><img class = \"images\" src=\"Books/secret_nagas.jpg\" class=\"img-responsive\" style=\"width:100%\" alt=\"Image\"></a></div>\n        <div class=\"panel-footer\">Price - Rs. 179 <button>Add to cart</button></div>\n      </div>\n    </div>\n    <div class=\"col-sm-4\"> \n      <div class=\"panel panel-default\" onclick = \"add_to_cart(5)\">\n        <div class=\"panel-heading\">Kane and Abel by Jeffrey Archer</div>\n        <div class=\"panel-body\"><a class = \"popover_details\" href=\"#\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"auto\" data-content=\"GST - N/A\"><img class = \"images\" src=\"Books/kane_abel.jpg\" class=\"img-responsive\" style=\"width:100%\" alt=\"Image\"></a></div>\n        <div class=\"panel-footer\">Price - Rs. 323 <button>Add to cart</button></div>\n      </div>\n    </div>\n  </div>\n</div><br><br>\n\n<!-- Modal -->\n  <div class=\"modal fade\" id=\"myModal\" role=\"dialog\">\n    <div class=\"modal-dialog\">\n    \n      <!-- Modal content-->\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n\t\t\t<h4 class=\"modal-title\" style = \"font: 100 16px/1.1 'Roboto Condensed', Verdana, sans-serif;\">Your Cart</h4>\n        </div>\n        <div class=\"modal-body\">\n\t\t\t<table id=\"myTable\">\n\t\t\t\t<tr>\n\t\t\t\t\t<th>Name</th>\n\t\t\t\t\t\n\t\t\t\t\t<th>Qty.</th>\n\t\t\t\t\t\n\t\t\t\t\t<th>Price</th>\n\t\t\t\t\t\n\t\t\t\t\t<th>Total</th>\n\t\t\t\t</tr>\n\t\t\t</table>\n        </div>\n        <div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" onclick = \"reset_cart()\">Close</button>\n        </div>\n      </div>\n      \n    </div>\n  </div>\n\n<font style = \"font: 100 15px/1.1 'Roboto Condensed', Verdana, sans-serif;\">\n<footer class=\"footer\">\n      <div class=\"container\">\n        <span class=\"text-muted\">Shopping Store</span>\n      </div>\n    </footer>\n</font>\n\n<script>\n$(document).ready(function(){\n    $('[data-toggle=\"popover\"]').popover();   \n});\n\nvar booksArray = [\"Books/elon_musk.jpg\",\n\t\t\t\t  \"Books/steve_jobs.jpg\",\n\t\t\t\t  \"Books/fault_stars.jpg\",\n\t\t\t\t  \"Books/angels_demons.jpg\",\n\t\t\t\t  \"Books/secret_nagas.jpg\",\n\t\t\t\t  \"Books/kane_abel.jpg\"\n\t\t\t\t];\n\nvar laptopsArray = [\"Laptops/xps_13.jpg\",\n\t\t\t\t    \"Laptops/macbook_pro.jpg\",\n\t\t\t\t    \"Laptops/predator.jpg\",\n\t\t\t\t    \"Laptops/zenbook.jpg\",\n\t\t\t\t    \"Laptops/gram.jpg\",\n\t\t\t\t    \"Laptops/spectre.jpg\"\n\t\t\t\t];\n\nvar smartphonesArray = [\"Smartphones/galaxy_s8.jpeg\",\n\t\t\t\t\t\t\"Smartphones/iphone_7plus.jpg\",\n\t\t\t\t\t\t\"Smartphones/lg_g6.jpeg\",\n\t\t\t\t\t\t\"Smartphones/moto_x4.jpg\",\n\t\t\t\t\t\t\"Smartphones/xperia_xzs.jpg\",\n\t\t\t\t\t\t\"Smartphones/pixel_xl.jpeg\"\n\t\t\t\t\t\t\t];\n\nvar bagsArray = [\"Bags/herschel_heritage.jpg\",\n\t\t\t\t \"Bags/herschel_retreat.jpg\",\n\t\t\t\t \"Bags/tommy_hilfiger.jpg\",\n\t\t\t\t \"Bags/peak_design.jpeg\",\n\t\t\t\t \"Bags/timbuk2_rogue.jpg\",\n\t\t \t\t \"Bags/timbuk2_uptown.jpg\"\n\t\t\t\t];\n\nvar speakersArray = [\"Speakers/jbl_flip.jpg\",\n\t\t\t\t     \"Speakers/moto_deck.png\",\n\t\t\t\t     \"Speakers/bose_soundlink.jpg\",\n\t\t\t\t     \"Speakers/jbl_pulse.jpg\",\n\t\t\t\t     \"Speakers/ue_boom_2.jpg\",\n\t\t \t\t     \"Speakers/bose_soundtouch.jpg\"\n\t\t\t\t    ];\n\nvar imageArray = [\"books\", \"laptopsArray\", \"smartphonesArray\", \"bagsArray\", \"speakersArray\"];\nvar bookHeadings = [ \"Elon Musk by Ashlee Vance\",\n\t\t\t\t\t \"Steve Jobs by Walter Issacson\",\n\t\t\t\t\t \"The Fault in our Stars by John Green\",\n\t\t\t\t\t \"Angels and Demons by Dan Brown\",\n\t\t\t\t\t \"Secret of the Nagas by Amish Tripathi\",\n\t\t\t\t\t \"Kane and Abel by Jeffrey Archer\"\n\t\t\t\t\t];\n\nvar laptopHeadings = [ \"Dell XPS 13\",\n\t\t\t\t\t \"Apple Macbook Pro\",\n\t\t\t\t\t \"Acer Predator 21x\",\n\t\t\t\t\t \"Asus Zenbook Infinity\",\n\t\t\t\t\t \"LG Gram\",\n\t\t\t\t\t \"HP Spectre\"\n\t\t\t\t\t];\n\t\t\t\t\t\nvar smartphoneHeadings = [ \"Samsung Galaxy S8\",\n\t\t\t\t\t \"Apple iPhone 7 Plus\",\n\t\t\t\t\t \"LG G6\",\n\t\t\t\t\t \"Lenovo Moto X4\",\n\t\t\t\t\t \"Xperia XZS\",\n\t\t\t\t\t \"Google Pixel XL\"\n\t\t\t\t\t];\n\t\t\t\t\t\nvar bagHeadings = [  \"Herschel Supply Co. Heritage Backpack\",\n\t\t\t\t\t \"Herschel Supply Co. Retreat Backpack\",\n\t\t\t\t\t \"Tommy Hilfiger Backpack\",\n\t\t\t\t\t \"Peak Design Everyday Backpack\",\n\t\t\t\t\t \"Timbuk2 Rogue Backpack\",\n\t\t\t\t\t \"Timbuk2 Uptown Backpack\"\n\t\t\t\t\t];\n\t\t\t\t\t\nvar speakerHeadings = [\"JBL Flip 4\",\n\t\t\t\t\t \"Motorola Moto Deck\",\n\t\t\t\t\t \"BOSE Soundlink Mini\",\n\t\t\t\t\t \"JBL Pulse\",\n\t\t\t\t\t \"UE Boom 2\",\n\t\t\t\t\t \"BOSE Soundtouch 10\"\n\t\t\t\t\t];\n\t\t\t\t\t\nvar bookPrice = [\"Price - Rs. 454 <button>Add to cart</button>\", \"Price - Rs. 329 <button>Add to cart</button>\", \"Price - Rs. 240\", \"Price - Rs. 189 <button>Add to cart</button>\", \"Price - Rs. 179 <button>Add to cart</button>\", \"Price - Rs. 323 <button>Add to cart</button>\"];\nvar laptopPrice = [\"Price - Rs. 1,15,000 <button>Add to cart</button>\", \"Price - Rs. 2,18,990 <button>Add to cart</button>\", \"Price - Rs. 5,77,470 <button>Add to cart</button>\", \"Price - Rs. 64,200 <button>Add to cart</button>\", \"Price - Rs. 83,230 <button>Add to cart</button>\", \"Price - Rs. 54,600 <button>Add to cart</button>\"];\nvar smartphonePrice = [\"Price - Rs. 57,900 <button>Add to cart</button>\", \"Price - Rs. 67,999 <button>Add to cart</button>\", \"Price - Rs. 36,990 <button>Add to cart</button>\", \"Price - Rs. 33,900 <button>Add to cart</button>\", \"Price - Rs. 39,990 <button>Add to cart</button>\", \"Price - Rs. 54,000 <button>Add to cart</button>\"];\nvar bagPrice = [\"Price - Rs. 5,952 <button>Add to cart</button>\", \"Price - Rs. 8,024 <button>Add to cart</button>\", \"Price - Rs. 1,250 <button>Add to cart</button>\", \"Price - Rs. 16,045 <button>Add to cart</button>\", \"Price - Rs. 11,986 <button>Add to cart</button>\", \"Price - Rs. 12,899 <button>Add to cart</button>\"];\nvar speakerPrice = [\"Price - Rs. 8,999 <button>Add to cart</button>\", \"Price - Rs. 7,199 <button>Add to cart</button>\", \"Price - Rs. 16,200 <button>Add to cart</button>\", \"Price - Rs. 15,399 <button>Add to cart</button>\", \"Price - Rs. 12,555 <button>Add to cart</button>\", \"Price - Rs. 19,013 <button>Add to cart</button>\"];\n\nvar laptopPrices = [\"Price - Rs. 115000 <button>Add to cart</button>\", \"Price - Rs. 218990 <button>Add to cart</button>\", \"Price - Rs. 577470 <button>Add to cart</button>\", \"Price - Rs. 64200 <button>Add to cart</button>\", \"Price - Rs. 83230 <button>Add to cart</button>\", \"Price - Rs. 54600 <button>Add to cart</button>\"];\nvar smartphonePrices = [\"Price - Rs. 57900 <button>Add to cart</button>\", \"Price - Rs. 67999 <button>Add to cart</button>\", \"Price - Rs. 36990 <button>Add to cart</button>\", \"Price - Rs. 33900 <button>Add to cart</button>\", \"Price - Rs. 39990 <button>Add to cart</button>\", \"Price - Rs. 54000 <button>Add to cart</button>\"];\nvar bagPrices = [\"Price - Rs. 5952 <button>Add to cart</button>\", \"Price - Rs. 8024 <button>Add to cart</button>\", \"Price - Rs. 1250 <button>Add to cart</button>\", \"Price - Rs. 16045 <button>Add to cart</button>\", \"Price - Rs. 11986 <button>Add to cart</button>\", \"Price - Rs. 12899 <button>Add to cart</button>\"];\nvar speakerPrices = [\"Price - Rs. 8999 <button>Add to cart</button>\", \"Price - Rs. 7199 <button>Add to cart</button>\", \"Price - Rs. 16200 <button>Add to cart</button>\", \"Price - Rs. 15399 <button>Add to cart</button>\", \"Price - Rs. 12555 <button>Add to cart</button>\", \"Price - Rs. 19013 <button>Add to cart</button>\"];\n\nvar mbookPrice = [\"Price - Rs. 454\", \"Price - Rs. 329\", \"Price - Rs. 240\", \"Price - Rs. 189\", \"Price - Rs. 179\", \"Price - Rs. 323\"];\nvar mlaptopPrice = [\"Price - Rs. 1,15,000\", \"Price - Rs. 2,18,990\", \"Price - Rs. 5,77,470\", \"Price - Rs. 64,200\", \"Price - Rs. 83,230\", \"Price - Rs. 54,600\"];\nvar msmartphonePrice = [\"Price - Rs. 57,900\", \"Price - Rs. 67,999\", \"Price - Rs. 36,990\", \"Price - Rs. 33,900\", \"Price - Rs. 39,990\", \"Price - Rs. 54,000\"];\nvar mbagPrice = [\"Price - Rs. 5,952\", \"Price - Rs. 8,024\", \"Price - Rs. 1,250\", \"Price - Rs. 16,045\", \"Price - Rs. 11,986\", \"Price - Rs. 12,899\"];\nvar mspeakerPrice = [\"Price - Rs. 8,999\", \"Price - Rs. 7,199\", \"Price - Rs. 16,200\", \"Price - Rs. 15,399\", \"Price - Rs. 12,555\", \"Price - Rs. 19,013\"];\nvar mlaptopPrices = [\"Price - Rs. 115000\", \"Price - Rs. 218990\", \"Price - Rs. 577470\", \"Price - Rs. 64200\", \"Price - Rs. 83230\", \"Price - Rs. 54600\"];\nvar msmartphonePrices = [\"Price - Rs. 57900\", \"Price - Rs. 67999\", \"Price - Rs. 36990\", \"Price - Rs. 33900\", \"Price - Rs. 39990\", \"Price - Rs. 54000\"];\nvar mbagPrices = [\"Price - Rs. 5952\", \"Price - Rs. 8024\", \"Price - Rs. 1250\", \"Price - Rs. 16045\", \"Price - Rs. 11986\", \"Price - Rs. 12899\"];\nvar mspeakerPrices = [\"Price - Rs. 8999\", \"Price - Rs. 7199\", \"Price - Rs. 16200\", \"Price - Rs. 15399\", \"Price - Rs. 12555\", \"Price - Rs. 19013\"];\n\n\nvar current_category = 0;\n\nfunction productDisplay(category)\t{\t\n\tcurrent_category = category;\n\tvar panels = document.getElementsByClassName('images');\n\tvar price = document.getElementsByClassName('panel-footer');\n\tvar headings = document.getElementsByClassName('panel-heading');\n\tvar popover = document.getElementsByClassName('popover_details');\n\tfor(i = 0 ; i < panels.length ; i++)\n\t{\n\t\tswitch(category)\n\t\t{\n\t\t\tcase 0: panels[i].src = booksArray[i];\n\t\t\t\t\theadings[i].innerHTML = bookHeadings[i];\n\t\t\t\t\tprice[i].innerHTML = bookPrice[i];\n\t\t\t\t\tpopover[i].setAttribute('data-content','GST - N/A');\n\t\t\t\t\tbreak;\n\t\t\tcase 1: panels[i].src = laptopsArray[i];\n\t\t\t\t\theadings[i].innerHTML = laptopHeadings[i];\n\t\t\t\t\tprice[i].innerHTML = laptopPrice[i];\n\t\t\t\t\tpopover[i].setAttribute('data-content','GST - 18%');\n\t\t\t\t\tbreak;\n\t\t\tcase 2: panels[i].src = smartphonesArray[i];\n\t\t\t\t\theadings[i].innerHTML = smartphoneHeadings[i];\n\t\t\t\t\tprice[i].innerHTML = smartphonePrice[i];\n\t\t\t\t\tpopover[i].setAttribute('data-content','GST - 12%');\n\t\t\t\t\tbreak;\n\t\t\tcase 3: panels[i].src = bagsArray[i];\n\t\t\t\t\theadings[i].innerHTML = bagHeadings[i];\n\t\t\t\t\tprice[i].innerHTML = bagPrice[i];\n\t\t\t\t\tpopover[i].setAttribute('data-content','GST - 28%');\n\t\t\t\t\tbreak;\n\t\t\tcase 4: panels[i].src = speakersArray[i];\n\t\t\t\t\theadings[i].innerHTML = speakerHeadings[i];\n\t\t\t\t\tprice[i].innerHTML = speakerPrice[i];\n\t\t\t\t\tpopover[i].setAttribute('data-content','GST - 18%');\n\t\t\t\t\tbreak;\n\t\t}\n\t\t\n\t}\n}\n\nvar new_category;\nvar counter = 0;\n\nfunction addCategory(){\n\tnew_category = prompt(\"Please enter a new category:\", \"Shoes\");\n\tvar category = document.getElementsByClassName('dummyNav');\n\tcategory[counter].innerHTML = new_category;\n\tcounter++;\n}\n\nfunction dummy(){\n\tvar panels = document.getElementsByClassName('images');\n\tvar headings = document.getElementsByClassName('panel-heading');\n\tvar popover = document.getElementsByClassName('popover_details');\n\tfor(i = 0 ; i < panels.length ; i++)\n\t{\n\t\tpanels[i].src = 'https://placehold.it/150x80?text=IMAGE';\n\t\theadings[i].innerHTML = 'Product #' + (i+1);\n\t\tpopover.title = bookPrice[i];\n\t\tpopover[i].setAttribute('data-content','GST - N/A');\t\t\n\t}\n}\n\nvar cart = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];\n\nfunction add_to_cart(product){\n\n\tswitch(current_category)\n\t\t{\n\t\t\tcase 0: cart[product]++;\n\t\t\t\t\talert(\"Item added to cart!\");\n\t\t\t\t\tbreak;\n\t\t\tcase 1: cart[product + 6]++;\n\t\t\t\t\talert(\"Item added to cart!\");\n\t\t\t\t\tbreak;\n\t\t\tcase 2: cart[product + 12]++;\n\t\t\t\t\talert(\"Item added to cart!\");\n\t\t\t\t\tbreak;\n\t\t\tcase 3: cart[product + 18]++;\n\t\t\t\t\talert(\"Item added to cart!\");\n\t\t\t\t\tbreak;\n\t\t\tcase 4: cart[product + 24]++;\n\t\t\t\t\talert(\"Item added to cart!\");\n\t\t\t\t\tbreak;\n\t\t}\n}\n\nvar final_total = 0;\n\nfunction show_in_cart(){\n\n\tvar table = document.getElementById(\"myTable\");\n\tvar row;\n\tvar name;\n\tvar qty;\n\tvar price;\n\tvar total;\n\tfor(var i = 0 ; i < cart.length ; i++)\n\t{\n\t\tif(cart[i] > 0)\n\t\t{\n\t\t\trow = table.insertRow(1);\n\t\t\tname = row.insertCell(0);\n\t\t\t\n\t\t\tqty = row.insertCell(1);\n\t\t\t\n\t\t\tprice = row.insertCell(2);\n\t\t\ttotal = row.insertCell(3);\n\t\t\t\n\t\t\tvar category = Math.floor(i/5);\n\t\t\tvar product = i%5;\n\t\t\t\n\t\t\t<!--Name of each product-->\n\t\t\tswitch(category)\n\t\t\t{\n\t\t\t\tcase 0: name.innerHTML = bookHeadings[product];\n\t\t\t\t\t    break;\n\t\t\t\tcase 1: name.innerHTML = laptopHeadings[product];\n\t\t\t\t\t\tbreak;\n\t\t\t\tcase 2: name.innerHTML = smartphoneHeadings[product];\n\t\t\t\t\t\tbreak;\n\t\t\t\tcase 3: name.innerHTML = bagHeadings[product];\n\t\t\t\t\t\tbreak;\n\t\t\t\tcase 4: name.innerHTML = speakerHeadings[product];\n\t\t\t\t\t\tbreak;\n\t\t\t}\n\t\t\t\n\t\t\t<!--Print the quantity of each product-->\n\t\t\tqty.innerHTML = cart[i];\n\t\t\t\n\t\t\t<!--Price of each product-->\n\t\t\tswitch(category)\n\t\t\t{\n\t\t\t\tcase 0: price.innerHTML = mbookPrice[product].substr(12);\n\t\t\t\t\t    break;\n\t\t\t\tcase 1: price.innerHTML = mlaptopPrice[product].substr(12);\n\t\t\t\t\t\tbreak;\n\t\t\t\tcase 2: price.innerHTML = msmartphonePrice[product].substr(12);\n\t\t\t\t\t\tbreak;\n\t\t\t\tcase 3: price.innerHTML = mbagPrice[product].substr(12);\n\t\t\t\t\t\tbreak;\n\t\t\t\tcase 4: price.innerHTML = mspeakerPrice[product].substr(12);\n\t\t\t\t\t\tbreak;\n\t\t\t}\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t<!--Print the total amount-->\n\t\t\tswitch(category)\n\t\t\t{\n\t\t\t\tcase 0: total.innerHTML = cart[i]*parseInt(bookPrice[product].substr(12));\n\t\t\t\t\t\tfinal_total = final_total + (cart[i]*parseInt(bookPrice[product].substr(12)));\n\t\t\t\t\t    break;\n\t\t\t\tcase 1: total.innerHTML = cart[i]*parseInt(laptopPrices[product].substr(12));\n\t\t\t\t\t\tfinal_total = final_total + (cart[i]*parseInt(laptopPrices[product].substr(12)));\n\t\t\t\t\t\tbreak;\n\t\t\t\tcase 2: total.innerHTML = cart[i]*parseInt(smartphonePrices[product].substr(12));\n\t\t\t\t\t\tfinal_total = final_total + (cart[i]*parseInt(smartphonePrices[product].substr(12)));\n\t\t\t\t\t\tbreak;\n\t\t\t\tcase 3: total.innerHTML = cart[i]*parseInt(bagPrices[product].substr(12));\n\t\t\t\t\t\tfinal_total = final_total + (cart[i]*parseInt(bagPrices[product].substr(12)));\n\t\t\t\t\t\tbreak;\n\t\t\t\tcase 4: total.innerHTML = cart[i]*parseInt(speakerPrices[product].substr(12));\n\t\t\t\t\t\tfinal_total = final_total + (cart[i]*parseInt(speakerPrices[product].substr(12)));\n\t\t\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t}\n\trow = table.insertRow(-1);\n\tname = row.insertCell(0);\n\tqty = row.insertCell(1);\n\tprice = row.insertCell(2);\n\n\ttotal = row.insertCell(3);\n\tif(final_total > 0)\n\t{\n\t\t\n\t\ttotal.innerHTML = final_total;\n\t}\n\telse\n\t{\n\t\tprice.innerHTML = \"Cart Empty!\";\n\t}\n\tfinal_total = 0;\n}\n\nfunction reset_cart(){\n\tvar table = document.getElementById('myTable');\n\twhile(table.rows.length > 0){\n\t\ttable.deleteRow(1);\n\t}\n}\n</script>\n\n</body>\n</html>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Bootstrap/onlinestore.html	(revision d74974ed09a15a94f68eb0685a64fc85763fae75)
++++ Bootstrap/onlinestore.html	(revision )
+@@ -9,6 +9,7 @@
+   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
++  <script src="assets/js/notify.min.js"></script>
+   <style>
+     .navbar {
+       margin-bottom: 50px;
+@@ -113,7 +114,7 @@
+       </ul>
+       <ul class="nav navbar-nav navbar-right">
+         <li><a href="#" onclick = "addCategory()"><span class="glyphicon glyphicon-plus"></span> Add Category</a></li>
+-        <li><a href="#" data-toggle="modal" data-target="#myModal" onclick = "show_in_cart()"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
++        <li><a href="#" data-toggle="modal" data-target="#myModal" onclick = "show_in_cart()" data-backdrop="static" data-keyboard="false"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+       </ul>
+     </div>
+   </div>
+@@ -123,22 +124,22 @@
+   <div class="row">
+     <div class="col-sm-4">
+       <div class="panel panel-default" onclick = "add_to_cart(0)">
+-        <div class="panel-heading">Elon Musk by Ashlee Vance</div>
+-        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/elon_musk.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
++        <div class="panel-heading">Wings of Fire - Autobiography</div>
++        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="images/apj.jpeg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+         <div class="panel-footer">Price - Rs. 454 <button>Add to cart</button></div>
+       </div>
+     </div>
+     <div class="col-sm-4"> 
+       <div class="panel panel-default" onclick = "add_to_cart(1)">
+-        <div class="panel-heading">Steve Jobs by Walter Issacson</div>
+-        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/steve_jobs.jpg" class="img-responsive" style="width: 100%" alt="Image"></a></div>
++        <div class="panel-heading">The Lean startup</div>
++        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="images/TLS.jpeg" class="img-responsive" style="width: 100%" alt="Image"></a></div>
+         <div class="panel-footer">Price - Rs. 329 <button>Add to cart</button></div>
+       </div>
+     </div>
+     <div class="col-sm-4"> 
+       <div class="panel panel-default" onclick = "add_to_cart(2)">
+-        <div class="panel-heading">The Fault in our Stars by John Green</div>
+-        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/fault_stars.jpg" class="img-responsive" style="width: 100%" alt="Image"></a></div>
++        <div class="panel-heading">Startup Nation</div>
++        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="images/SUN.jpeg" class="img-responsive" style="width: 100%" alt="Image"></a></div>
+         <div class="panel-footer">Price - Rs. 240 <button>Add to cart</button></div>
+       </div>
+     </div>
+@@ -149,8 +150,8 @@
+   <div class="row">
+     <div class="col-sm-4">
+       <div class="panel panel-default" onclick = "add_to_cart(3)">
+-        <div class="panel-heading">Angels and Demons by Dan Brown</div>
+-        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/angels_demons.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
++        <div class="panel-heading">Free Will</div>
++        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="images/FW.jpeg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+         <div class="panel-footer">Price - Rs. 189 <button>Add to cart</button></div>
+       </div>
+     </div>
+@@ -173,21 +174,22 @@
+ 
+ <!-- Modal -->
+   <div class="modal fade" id="myModal" role="dialog">
+-    <div class="modal-dialog">
++    <div class="modal-dialog modal-lg">
+     
+       <!-- Modal content-->
+       <div class="modal-content">
+         <div class="modal-header">
+-			<button type="button" class="close" data-dismiss="modal">&times;</button>
++
+ 			<h4 class="modal-title" style = "font: 100 16px/1.1 'Roboto Condensed', Verdana, sans-serif;">Your Cart</h4>
+         </div>
+         <div class="modal-body">
+ 			<table id="myTable">
+ 				<tr>
+ 					<th>Name</th>
+-					
++                  <th>Image</th>
++                  <th>Dec</th>
+ 					<th>Qty.</th>
+-					
++					<th>Inc</th>
+ 					<th>Price</th>
+ 					
+ 					<th>Total</th>
+@@ -215,10 +217,10 @@
+     $('[data-toggle="popover"]').popover();   
+ });
+ 
+-var booksArray = ["Books/elon_musk.jpg",
+-				  "Books/steve_jobs.jpg",
+-				  "Books/fault_stars.jpg",
+-				  "Books/angels_demons.jpg",
++var booksArray = ["images/apj.jpeg",
++				  "images/TLS.jpeg",
++				  "images/SUN.jpeg",
++				  "images/FW.jpeg",
+ 				  "Books/secret_nagas.jpg",
+ 				  "Books/kane_abel.jpg"
+ 				];
+@@ -256,9 +258,9 @@
+ 				    ];
+ 
+ var imageArray = ["books", "laptopsArray", "smartphonesArray", "bagsArray", "speakersArray"];
+-var bookHeadings = [ "Elon Musk by Ashlee Vance",
+-					 "Steve Jobs by Walter Issacson",
+-					 "The Fault in our Stars by John Green",
++var bookHeadings = [ "Wings of Fire ",
++					 "The Lean Startup",
++					 "The Lean Startup",
+ 					 "Angels and Demons by Dan Brown",
+ 					 "Secret of the Nagas by Amish Tripathi",
+ 					 "Kane and Abel by Jeffrey Archer"
+@@ -268,10 +270,10 @@
+ 					 "Apple Macbook Pro",
+ 					 "Acer Predator 21x",
+ 					 "Asus Zenbook Infinity",
+-					 "LG Gram",
+-					 "HP Spectre"
++					 "Hp OMEN",
++					 "Dell Inspiron"
+ 					];
+-					
++
+ var smartphoneHeadings = [ "Samsung Galaxy S8",
+ 					 "Apple iPhone 7 Plus",
+ 					 "LG G6",
+@@ -312,10 +314,8 @@
+ var msmartphonePrice = ["Price - Rs. 57,900", "Price - Rs. 67,999", "Price - Rs. 36,990", "Price - Rs. 33,900", "Price - Rs. 39,990", "Price - Rs. 54,000"];
+ var mbagPrice = ["Price - Rs. 5,952", "Price - Rs. 8,024", "Price - Rs. 1,250", "Price - Rs. 16,045", "Price - Rs. 11,986", "Price - Rs. 12,899"];
+ var mspeakerPrice = ["Price - Rs. 8,999", "Price - Rs. 7,199", "Price - Rs. 16,200", "Price - Rs. 15,399", "Price - Rs. 12,555", "Price - Rs. 19,013"];
+-var mlaptopPrices = ["Price - Rs. 115000", "Price - Rs. 218990", "Price - Rs. 577470", "Price - Rs. 64200", "Price - Rs. 83230", "Price - Rs. 54600"];
+-var msmartphonePrices = ["Price - Rs. 57900", "Price - Rs. 67999", "Price - Rs. 36990", "Price - Rs. 33900", "Price - Rs. 39990", "Price - Rs. 54000"];
+-var mbagPrices = ["Price - Rs. 5952", "Price - Rs. 8024", "Price - Rs. 1250", "Price - Rs. 16045", "Price - Rs. 11986", "Price - Rs. 12899"];
+-var mspeakerPrices = ["Price - Rs. 8999", "Price - Rs. 7199", "Price - Rs. 16200", "Price - Rs. 15399", "Price - Rs. 12555", "Price - Rs. 19013"];
++
++
+ 
+ 
+ var current_category = 0;
+@@ -331,6 +331,7 @@
+ 		switch(category)
+ 		{
+ 			case 0: panels[i].src = booksArray[i];
++
+ 					headings[i].innerHTML = bookHeadings[i];
+ 					price[i].innerHTML = bookPrice[i];
+ 					popover[i].setAttribute('data-content','GST - N/A');
+@@ -361,13 +362,19 @@
+ }
+ 
+ var new_category;
+-var counter = 0;
++var counter = 5;
++
++
++var cart = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+ 
+ function addCategory(){
++
+ 	new_category = prompt("Please enter a new category:", "Shoes");
+ 	var category = document.getElementsByClassName('dummyNav');
+-	category[counter].innerHTML = new_category;
++	category[counter-5].innerHTML = new_category;
+ 	counter++;
++	var newCat = [0,0,0,0,0,0];
++	cart = cart.concat(newCat);
+ }
+ 
+ function dummy(){
+@@ -383,38 +390,84 @@
+ 	}
+ }
+ 
+-var cart = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+-
+ function add_to_cart(product){
+ 
++
++    if (current_category == 0)
++    {
++        if (cart[product])
++        {
++            $.notify("Only 1 item allowed per customer", "warn");
++        }
++        else
++        {
++            cart[product]++;
++            $.notify("Item added to Cart", "success");
++        }
++
++    }
+ 	switch(current_category)
+ 		{
+-			case 0: cart[product]++;
+-					alert("Item added to cart!");
+-					break;
+ 			case 1: cart[product + 6]++;
+-					alert("Item added to cart!");
++                $.notify("Item added to Cart", "success");
+ 					break;
+ 			case 2: cart[product + 12]++;
+-					alert("Item added to cart!");
++                $.notify("Item added to Cart", "success");
+ 					break;
+ 			case 3: cart[product + 18]++;
+-					alert("Item added to cart!");
++                $.notify("Item added to Cart", "success");
+ 					break;
+ 			case 4: cart[product + 24]++;
+-					alert("Item added to cart!");
++                $.notify("Item added to Cart", "success");
+ 					break;
+ 		}
+ }
+ 
++function incProduct(product) {
++    if (cart[product])
++    {
++        var v = Math.floor(i/((cart.length)/5));
++        if(v==0)
++        {
++            $.notify("Only 1 item allowed per customer", "warn");
++        }
++        else
++        {
++            cart[product]++;
++            $.notify('Quantity increased to '+cart[product], "success");
++        }
++
++    }
++    else
++    {
++        $.notify("This product is no longer in cart", "error");
++    }
++}
++
++function decProduct(product) {
++    if(cart[product]<=0)
++    {
++        $.notify("This product is no longer in cart", "error");
++    }
++    else
++    {
++      cart[product]--;
++        $.notify("Quantity decreased to "+cart[product], "success");
++    }
++}
++
+ var final_total = 0;
+ 
+ function show_in_cart(){
+ 
++
+ 	var table = document.getElementById("myTable");
+ 	var row;
+ 	var name;
++	var im;
++	var dec;
+ 	var qty;
++	var inc;
+ 	var price;
+ 	var total;
+ 	for(var i = 0 ; i < cart.length ; i++)
+@@ -423,33 +476,48 @@
+ 		{
+ 			row = table.insertRow(1);
+ 			name = row.insertCell(0);
+-			
+-			qty = row.insertCell(1);
+-			
+-			price = row.insertCell(2);
+-			total = row.insertCell(3);
+-			
+-			var category = Math.floor(i/5);
+-			var product = i%5;
++			im = row.insertCell(1);
++			dec = row.insertCell(2);
++			qty = row.insertCell(3);
++			inc = row.insertCell(4);
++			price = row.insertCell(5);
++			total = row.insertCell(6);
++
++			var category = Math.floor(i/((cart.length)/5));
++			var product = i%((cart.length)/5);
++
++
++
+ 			
+ 			<!--Name of each product-->
+ 			switch(category)
+ 			{
+ 				case 0: name.innerHTML = bookHeadings[product];
++				console.log('<img src="'+booksArray[product]+'">');
++                        im.innerHTML = '<img style="width: 30px" src="'+booksArray[product]+'">';
+ 					    break;
++
+ 				case 1: name.innerHTML = laptopHeadings[product];
++				        im.innerHTML = '<img style="width: 30px" src="'+laptopsArray[product]+'">';
+ 						break;
+ 				case 2: name.innerHTML = smartphoneHeadings[product];
++                        im.innerHTML = '<img style="width: 30px" src="'+smartphonesArray[product]+'">';
+ 						break;
+ 				case 3: name.innerHTML = bagHeadings[product];
++                        im.innerHTML = '<img style="width: 30px" src="'+bagsArray[product]+'">';
+ 						break;
+ 				case 4: name.innerHTML = speakerHeadings[product];
++                        im.innerHTML = '<img style="width: 30px" src="'+speakersArray[product]+'">';
+ 						break;
+ 			}
+-			
++
++
++
++			dec.innerHTML = '<button onclick="decProduct('+(parseInt(product+(category*6)))+')">-</button>';
+ 			<!--Print the quantity of each product-->
+-			qty.innerHTML = cart[i];
+-			
++			qty.innerHTML = '<p id="q'+parseInt(product+(category*6))+'">'+cart[i]+'</p>';
++            inc.innerHTML = '<button onclick="incProduct('+parseInt(product + (category*6))+')">+</button>';
++
+ 			<!--Price of each product-->
+ 			switch(category)
+ 			{
+@@ -490,10 +558,12 @@
+ 	}
+ 	row = table.insertRow(-1);
+ 	name = row.insertCell(0);
+-	qty = row.insertCell(1);
+-	price = row.insertCell(2);
++	dec = row.insertCell(1);
++	qty = row.insertCell(2);
++	inc = row.insertCell(3);
++	price = row.insertCell(4);
+ 
+-	total = row.insertCell(3);
++	total = row.insertCell(5);
+ 	if(final_total > 0)
+ 	{
+ 		
+Index: Quora/app/Question.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace App;\n\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass Question extends Model\n{\n    protected $fillable = [\n      'question',\n      'state',\n      'topic',\n      'answer',\n       'upvote'\n    ];\n\n    public function comments()\n    {\n        return $this->hasMany(Comment::class);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Quora/app/Question.php	(revision d74974ed09a15a94f68eb0685a64fc85763fae75)
++++ Quora/app/Question.php	(revision )
+@@ -11,7 +11,8 @@
+       'state',
+       'topic',
+       'answer',
+-       'upvote'
++       'upvote',
++        'bookmarked'
+     ];
+ 
+     public function comments()
+Index: Quora/app/Http/Controllers/QuestionController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace App\\Http\\Controllers;\n\nuse App\\Question;\nuse Illuminate\\Http\\Request;\n\nclass QuestionController extends Controller\n{\n    public function index()\n    {\n        $questions = Question::where('answer', '!=', null)->get();\n        return view('welcome', compact('questions'));\n    }\n\n    public function loadTopic($topic)\n    {\n        $questions = Question::where('topic', $topic)->where('answer', '!=', null)->get();\n        return $questions;\n    }\n\n    public function storeComment(Request $request)\n    {\n        $question_id = $request->input('question_id');\n        $comment = $request->input('comment');\n        $question = Question::find($question_id);\n        $question->comments()->create([\n           'comment'    =>  $comment\n        ]);\n        return 1;\n    }\n\n    public function getComments($id)\n    {\n        $question = Question::find($id);\n        $comments = $question->comments;\n        return $comments;\n    }\n\n    public function storeQuestion(Request $request)\n    {\n        Question::create([\n           'question'   =>  $request->input('question'),\n           'state'  =>  'Delhi',\n           'topic'  =>  1,\n           'answer' =>  NULL,\n           'upvote' =>  0\n        ]);\n        return 1;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Quora/app/Http/Controllers/QuestionController.php	(revision d74974ed09a15a94f68eb0685a64fc85763fae75)
++++ Quora/app/Http/Controllers/QuestionController.php	(revision )
+@@ -4,13 +4,18 @@
+ 
+ use App\Question;
+ use Illuminate\Http\Request;
++use Illuminate\Support\Facades\DB;
++use Illuminate\Support\Facades\Input;
+ 
+ class QuestionController extends Controller
+ {
+     public function index()
+     {
++
+         $questions = Question::where('answer', '!=', null)->get();
+-        return view('welcome', compact('questions'));
++        $answers = Question::where('answer', '=', null)->get();
++        $bookmarked = Question::where('bookmarked', '=', 1)->get();
++        return view('welcome', compact('questions', 'answers', 'bookmarked'));
+     }
+ 
+     public function loadTopic($topic)
+@@ -39,13 +44,55 @@
+ 
+     public function storeQuestion(Request $request)
+     {
+-        Question::create([
++       $question = Question::create([
+            'question'   =>  $request->input('question'),
+            'state'  =>  'Delhi',
+            'topic'  =>  1,
+            'answer' =>  NULL,
+            'upvote' =>  0
+         ]);
+-        return 1;
++        return $question;
++    }
++
++    public function answerQuestion(Request $request)
++    {
++        $question = Question::find($request->input('question_id'));
++        $question->update([
++           'answer' =>  $request->input('answer')
++        ]);
++    }
++
++    public function loadQuestionByCity($state)
++    {
++        $questions = Question::where('state', '=', $state)->where('answer', '!=', null)->get();
++        return $questions;
++    }
++
++    public function upvote(Request $request)
++    {
++        $question = Question::find($request->input('question_id'));
++        $question->update([
++           'upvote' =>  $question->upvote + 1
++        ]);
++        return response()->json([
++            'votes' =>  $question->upvote
++        ]);
++    }
++
++    public function bookmarkQuestion(Request $request)
++    {
++        $question = Question::find($request->input('question_id'));
++
++        $question->update([
++        'bookmarked' => $question->bookmarked ? 0: 1
++        ]);
++        return response()->json([
++           'bookmarked' =>  $question->bookmarked
++        ]);
++    }
++
++    public function bookmarkedQuestions()
++    {
++        return Question::where('bookmarked', '1');
+     }
+ }
+Index: Quora/routes/api.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nuse Illuminate\\Http\\Request;\n\n/*\n|--------------------------------------------------------------------------\n| API Routes\n|--------------------------------------------------------------------------\n|\n| Here is where you can register API routes for your application. These\n| routes are loaded by the RouteServiceProvider within a group which\n| is assigned the \"api\" middleware group. Enjoy building your API!\n|\n*/\n\nRoute::middleware('auth:api')->get('/user', function (Request $request) {\n    return $request->user();\n});\n\n\nRoute::get('/question/topic/{topic}', 'QuestionController@loadTopic');\nRoute::post('/question/comment/store', 'QuestionController@storeComment');\nRoute::get('/question/{question}/comments', 'QuestionController@getComments');\nRoute::post('/question', 'QuestionController@storeQuestion');\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Quora/routes/api.php	(revision d74974ed09a15a94f68eb0685a64fc85763fae75)
++++ Quora/routes/api.php	(revision )
+@@ -22,3 +22,7 @@
+ Route::post('/question/comment/store', 'QuestionController@storeComment');
+ Route::get('/question/{question}/comments', 'QuestionController@getComments');
+ Route::post('/question', 'QuestionController@storeQuestion');
++Route::post('/question/{question}/answer', 'QuestionController@answerQuestion');
++Route::get('/question/state/{state}', 'QuestionController@loadQuestionByCity');
++Route::post('/question/{question}/upvote', 'QuestionController@upvote');
++Route::post('/question/{question}/bookmark', 'QuestionController@bookmarkQuestion');
+Index: Quora/resources/views/welcome.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <title>Bootstrap Example</title>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n</head>\n<body>\n\n<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <a class=\"navbar-brand\" href=\"#\" >Quora</a>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-md-3 col-md-offset-3\">\n                <ul class=\"nav navbar-nav\">\n                    <li class=\"active\"><a href=\"#\">Home</a></li>\n                    <li><a href=\"#\">Answer</a></li>\n                    <li><a href=\"#\">Notification</a></li>\n                </ul>\n            </div>\n            <div class=\"col-md-2 col-md-offset-1\">\n                <form class=\"navbar-form navbar-left\">\n                    <div class=\"input-group\">\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\n                        <div class=\"input-group-btn\">\n                            <button class=\"btn btn-default\" type=\"submit\">\n                                <i class=\"glyphicon glyphicon-search\"></i>\n                            </button>\n                        </div>\n                    </div>\n                </form>\n            </div>\n            <div class=\"col-md-2\">\n                <button class=\"btn btn-danger navbar-btn\" data-toggle=\"modal\" data-target=\"#askQuestion\">Ask</button>\n            </div>\n\n        </div>\n\n\n    </div>\n</nav>\n\n\n\n<div class=\"container\">\n    <div class=\"row\">\n         <div class=\"col-md-2\">\n             <h5>Feeds</h5>\n             <hr style=\"margin-top: 10px; height:1px;\"/>\n             <h6>Trending Topics</h6>\n             <div class=\"list-group\">\n                 <a href=\"#\" class=\"list-group-item\" onclick=\"loadTopic(0)\">Movies</a>\n                 <a href=\"#\" class=\"list-group-item\" onclick=\"loadTopic(1)\">Big Data</a>\n                 <a href=\"#\" class=\"list-group-item\" onclick=\"loadTopic(2)\">Third item</a>\n             </div>\n\n\n         </div>\n        <div class=\"col-md-7\" id=\"main-body\">\n            @foreach($questions as $question)\n                <div class=\"panel panel-default\" id=\"{{$question->id}}_body\">\n                    <div class=\"panel-heading\">\n                        <div class=\"row\">\n                            <div class=\"col-md-1\">\n                                <img src=\"{{asset('/images/default-profile.png')}}\" alt=\"profile\" style=\" width: 50px\">\n                            </div>\n                            <div class=\"col-md-11\">\n                                <h4 style=\"margin-left: 5px\">{{$question->question}}</h4>\n                            </div>\n\n\n                        </div>\n                         </div>\n                    <div class=\"panel-body\">\n                        {{$question->answer}}\n                    </div>\n                    <div class=\"panel-footer\">\n                        <div class=\"row\">\n                            <div class=\"col-md-5\">\n                                <button type=\"button\" class=\"btn btn-primary\">Upvote | {{$question->upvote}}</button>\n                                <a style=\"margin-left: 10px\" onclick=\"remove({{$question->id}})\" href=\"#\">Downvote</a>\n                            </div>\n                        </div>\n                        <div class=\"row\">\n                            <div class=\"col-md-8\">\n                                <div class=\"form-group\">\n                                    <label for=\"usr\"></label>\n                                    <input type=\"text\"  placeholder=\"Add a comment...\" class=\"form-control\" id=\"{{$question->id}}_comment\">\n                                    <div class=\"col-md-12\" id=\"{{$question->id}}_load-comments\" style=\"margin-top: 5px\">\n                                        <a href=\"#\" onclick=\"getComments({{$question->id}})\">View Comments</a>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"col-md-4\">\n                                <div class=\"form-group\">\n                                <label for=\"usr\"></label>\n                                <button style=\"margin-top: 18px\" id=\"storeComment\" onclick=\"storeComment({{$question->id}})\" type=\"button\" class=\"btn btn-default\">Comment</button>\n                                </div>\n                            </div>\n                        </div>\n\n                    </div>\n                </div>\n            @endforeach\n        </div>\n        <div class=\"col-md-3\">\n            <iframe src=\"//www.google.com/maps/embed/v1/place?q=Harrods,Brompton%20Rd,%20UK\n      &zoom=17\n      &key=AIzaSyCOQ81KucyxmQ9FRTvpaN0O2hYW-Un6kNU\">\n            </iframe>\n        </div>\n    </div>\n</div>\n\n\n<div id=\"askQuestion\" class=\"modal fade\" role=\"dialog\">\n    <div class=\"modal-dialog\">\n        <!-- Modal content-->\n        <div class=\"modal-content\">\n            <div class=\"modal-header\">\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n                <h4 class=\"modal-title\">Ask Question</h4>\n            </div>\n            <div class=\"modal-body\">\n                <div class=\"container\">\n                        <div class=\"form-group\">\n                            <label for=\"askQuestion\">Question:</label>\n                            <input style=\"width: 45%\" type=\"text\"  class=\"form-control\" id=\"ask_Question\" placeholder=\"Ask your Question\" name=\"question\">\n                        </div>\n                        <button type=\"submit\" onclick=\"askQuestion()\" class=\"btn btn-default\">Submit</button>\n                </div>\n            </div>\n            <div class=\"modal-footer\">\n                <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n            </div>\n        </div>\n    </div>\n</div>\n\n<script>\n    function askQuestion() {\n        var comment = $('#ask_Question').val();\n        $.post(\"/api/question\", {question: comment}, function(result){\n        });\n    }\n</script>\n<script>\n    function loadTopic(e)\n    {\n        $('#main-body').empty()\n        $.ajax({url: \"/api/question/topic/\"+e, success: function(result){\n            var html = ''\n            if(result)\n            {\n                jQuery.each(result, function (key, value) {\n                    var question = '<div class=\"panel panel-default\">\\n' +\n                        '                    <div class=\"panel-heading\">\\n' +\n                        '                    <h4>'+ value.question +'</h4>\\n' +\n                        '                    </div>\\n' +\n                        '                    <div class=\"panel-body\">'+ value.answer +' \\n' +\n                        '                         \\n' +\n                        '                    </div>\\n' +\n                        '                    <div class=\"panel-footer\">\\n' +\n                        '                    <div class=\"row\"> '    +\n                        '                    <div class=\"col-md-5\">' +\n                        '                    <button type=\"button\" class=\"btn btn-primary\">Upvote | '+value.upvote+'</button>\\n' +\n                       ' <a style=\"margin-left: 10px\" onclick=\"remove('+value.id+')\" href=\"#\">Downvote</a>' +\n                        '                    </div></div>' +\n                        '                    </div>\\n' +\n                        '<div class=\"row\">\\n' +\n                        '                            <div class=\"col-md-8\">\\n' +\n                        '                                <div class=\"form-group\">\\n' +\n                        '                                    <label for=\"usr\"></label>\\n' +\n                        '                                    <input type=\"text\"  placeholder=\"Add a comment...\" class=\"form-control\" id=\"'+value.id+'_comment\">\\n' +\n                        '                                    <div class=\"col-md-12\" id=\"'+value.id+'_load-comments\" style=\"margin-top: 5px\">\\n' +\n                        '                                        <a href=\"#\" onclick=\"getComments('+value.id+')\">View Comments</a>\\n' +\n                        '                                    </div>\\n' +\n                        '                                </div>\\n' +\n                        '                            </div>\\n' +\n                        '                            <div class=\"col-md-4\">\\n' +\n                        '                                <div class=\"form-group\">\\n' +\n                        '                                <label for=\"usr\"></label>\\n' +\n                        '                                <button style=\"margin-top: 18px\" id=\"storeComment\" onclick=\"storeComment('+value.id+')\" type=\"button\" class=\"btn btn-default\">Comment</button>\\n' +\n                        '                                </div>\\n' +\n                        '                            </div>\\n' +\n                        '                        </div>'+\n                    '                    </div>'\n\n                    html = html + question\n\n                })\n                $('#main-body').append(html)\n            }\n            else\n            {\n                $('#main-body').append(\"No questions yet\")\n            }\n\n        }});\n    }\n</script>\n<script>\n    function storeComment(id)\n    {\n        var comment = $('#'+id+'_comment').val();\n        $.post(\"/api/question/comment/store\", {comment: comment, question_id: id}, function(result){\n            getComments(id)\n        });\n    }\n    function getComments(qid) {\n        $('#'+qid+'_load-comments').empty()\n        $.ajax({url: '/api/question/'+qid+'/comments', success: function(result){\n            var html =''\n            jQuery.each(result, function (key, value){\n                var comment = '<div class=\"panel panel-default\" style=\"margin-bottom: 5px\"><div class=\"panel-body\"><div class=\"row\"><div class=\"col-md-1\"> <img src=\"{{asset(\"/images/default-profile.png\")}}\" style=\"width: 28px;\"> </div> <div class=\"col-md-11\">'+value.comment+'</div></div></div></div>'\n                html = html + comment\n            })\n            $('#'+qid+'_load-comments').append(html)\n        }});\n    }\n</script>\n\n<script>\n    function remove(id) {\n        $('#'+id+\"_body\").slideUp()\n    }\n</script>\n\n</body>\n\n</html>\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Quora/resources/views/welcome.blade.php	(revision d74974ed09a15a94f68eb0685a64fc85763fae75)
++++ Quora/resources/views/welcome.blade.php	(revision )
+@@ -7,33 +7,27 @@
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
++    <script async defer
++            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCj0pS-iu-9y2EKDrJlo7a2_X-qCsXpVno&callback=initMap">
++    </script>
+ </head>
+ <body>
+ 
+ <nav class="navbar navbar-inverse">
+     <div class="container-fluid">
+         <div class="navbar-header">
+-            <a class="navbar-brand" href="#" >Quora</a>
++            <a class="navbar-brand" href="#home" >Quora</a>
+         </div>
+         <div class="row">
+             <div class="col-md-3 col-md-offset-3">
+-                <ul class="nav navbar-nav">
+-                    <li class="active"><a href="#">Home</a></li>
+-                    <li><a href="#">Answer</a></li>
+-                    <li><a href="#">Notification</a></li>
++                <ul class="nav navbar-nav nav-pill">
++                    <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
++                    <li><a data-toggle="pill" href="#answer">Answer</a></li>
++
+                 </ul>
+             </div>
+             <div class="col-md-2 col-md-offset-1">
+-                <form class="navbar-form navbar-left">
+-                    <div class="input-group">
+-                        <input type="text" class="form-control" placeholder="Search">
+-                        <div class="input-group-btn">
+-                            <button class="btn btn-default" type="submit">
+-                                <i class="glyphicon glyphicon-search"></i>
+-                            </button>
+-                        </div>
+-                    </div>
+-                </form>
++
+             </div>
+             <div class="col-md-2">
+                 <button class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#askQuestion">Ask</button>
+@@ -49,71 +43,131 @@
+ 
+ <div class="container">
+     <div class="row">
+-         <div class="col-md-2">
+-             <h5>Feeds</h5>
+-             <hr style="margin-top: 10px; height:1px;"/>
+-             <h6>Trending Topics</h6>
+-             <div class="list-group">
+-                 <a href="#" class="list-group-item" onclick="loadTopic(0)">Movies</a>
+-                 <a href="#" class="list-group-item" onclick="loadTopic(1)">Big Data</a>
+-                 <a href="#" class="list-group-item" onclick="loadTopic(2)">Third item</a>
+-             </div>
+-
+-
+-         </div>
+-        <div class="col-md-7" id="main-body">
+-            @foreach($questions as $question)
+-                <div class="panel panel-default" id="{{$question->id}}_body">
+-                    <div class="panel-heading">
+-                        <div class="row">
+-                            <div class="col-md-1">
+-                                <img src="{{asset('/images/default-profile.png')}}" alt="profile" style=" width: 50px">
+-                            </div>
+-                            <div class="col-md-11">
+-                                <h4 style="margin-left: 5px">{{$question->question}}</h4>
+-                            </div>
++        <div class="tab-content col-md-12">
++            <div id="home" class="tab-pane fade in active col-md-12">
++                <div class="col-md-2">
++                    <h5>Feeds</h5>
++                    <hr style="margin-top: 10px; height:1px;"/>
++                    <h6>Trending Topics</h6>
++                    <div class="list-group">
++                        <a href="#" class="list-group-item" onclick="loadTopic(0)">Movies</a>
++                        <a href="#" class="list-group-item" onclick="loadTopic(1)">Big Data</a>
++                        <a href="#" class="list-group-item" onclick="loadTopic(2)">Block Chain</a>
++                    </div>
++                </div>
++                <div class="col-md-7" id="main-body">
++                    @foreach($questions as $question)
++                        <div class="panel panel-default" id="{{$question->id}}_body">
++                            <div class="panel-heading">
++                                    <div class="row">
++                                        <div class="col-md-1">
++                                            <img src="{{asset('/images/default-profile.png')}}" alt="profile" style=" width: 50px">
++                                        </div>
++                                        <div class="col-md-11">
++
++                                            <h4 style="margin-left: 5px">{{$question->question}}
++                                                @if($question->bookmarked) <img id="question_bookmark_{{$question->id}}" onclick="bookmark({{$question->id}})" style="width: 30px" src="{{asset('images/bookmarked.png')}}" alt="">
++                                                    @else
++                                                    <img id="question_bookmark_{{$question->id}}" onclick="bookmark({{$question->id}})" style="width: 30px" src="{{asset('images/bookmark.png')}}" alt="">
++                                                    @endif
++                                            </h4>
++
++                                        </div>
+ 
+ 
+-                        </div>
+-                         </div>
+-                    <div class="panel-body">
+-                        {{$question->answer}}
+-                    </div>
+-                    <div class="panel-footer">
+-                        <div class="row">
+-                            <div class="col-md-5">
+-                                <button type="button" class="btn btn-primary">Upvote | {{$question->upvote}}</button>
+-                                <a style="margin-left: 10px" onclick="remove({{$question->id}})" href="#">Downvote</a>
+-                            </div>
+-                        </div>
+-                        <div class="row">
+-                            <div class="col-md-8">
+-                                <div class="form-group">
+-                                    <label for="usr"></label>
+-                                    <input type="text"  placeholder="Add a comment..." class="form-control" id="{{$question->id}}_comment">
+-                                    <div class="col-md-12" id="{{$question->id}}_load-comments" style="margin-top: 5px">
+-                                        <a href="#" onclick="getComments({{$question->id}})">View Comments</a>
+-                                    </div>
+-                                </div>
+-                            </div>
+-                            <div class="col-md-4">
+-                                <div class="form-group">
+-                                <label for="usr"></label>
+-                                <button style="margin-top: 18px" id="storeComment" onclick="storeComment({{$question->id}})" type="button" class="btn btn-default">Comment</button>
+-                                </div>
+-                            </div>
+-                        </div>
++                                    </div>
++                                </div>
++                                <div class="panel-body">
++                                    {{$question->answer}}
++                                </div>
++                                <div class="panel-footer">
++                                    <div class="row">
++                                        <div class="col-md-5">
++                                            <button type="button" id="upvote_{{$question->id}}" onclick="upVote({{$question->id}})" class="btn btn-primary">Upvote | {{$question->upvote}}</button>
++                                            <a style="margin-left: 10px" onclick="remove({{$question->id}})" href="#">Downvote</a>
++                                        </div>
++                                    </div>
++                                    <div class="row">
++                                        <div class="col-md-8">
++                                            <div class="form-group">
++                                                <label for="usr"></label>
++                                                <input type="text"  placeholder="Add a comment..." class="form-control" id="{{$question->id}}_comment">
++                                                <div class="col-md-12" id="{{$question->id}}_load-comments" style="margin-top: 5px">
++                                                    <a href="#" onclick="getComments({{$question->id}})">View Comments</a>
++                                                </div>
++                                            </div>
++                                        </div>
++                                        <div class="col-md-4">
++                                            <div class="form-group">
++                                                <label for="usr"></label>
++                                                <button style="margin-top: 18px" id="storeComment" onclick="storeComment({{$question->id}})" type="button" class="btn btn-default">Comment</button>
++                                            </div>
++                                        </div>
++                                    </div>
+ 
+-                    </div>
+-                </div>
+-            @endforeach
+-        </div>
+-        <div class="col-md-3">
+-            <iframe src="//www.google.com/maps/embed/v1/place?q=Harrods,Brompton%20Rd,%20UK
+-      &zoom=17
+-      &key=AIzaSyCOQ81KucyxmQ9FRTvpaN0O2hYW-Un6kNU">
+-            </iframe>
+-        </div>
++                                </div>
++                            </div>
++                        @endforeach
++                    </div>
++                <div class="col-md-3">
++                    <div id="map"  style="width:250px;height:250px; float: right; position: relative;  padding:  20px 0 0 1.5rem; padding-top: 20px; float: top"></div>
++
++                </div>
++            </div>
++
++            <div class="tab-pane fade" id="answer">
++
++                <div class="col-md-7 col-md-offset-2" id="answer-body">
++                    @foreach($answers as $question)
++                        <div class="panel panel-default" id="{{$question->id}}_answer_body">
++                            <div class="panel-heading">
++                                <div class="row">
++                                    <div class="col-md-1">
++                                        <img src="{{asset('/images/default-profile.png')}}" alt="profile" style=" width: 50px">
++                                    </div>
++                                    <div class="col-md-11">
++                                        <h4 style="margin-left: 5px">{{$question->question}}</h4>
++                                    </div>
++
++
++                                </div>
++                            </div>
++                            <div class="panel-body">
++                                <div class="form-group">
++                                    <textarea class="form-control" placeholder="Answer this Question" rows="5" id="answerQuestion_{{$question->id}}"></textarea>
++                                </div>
++                                <div class="form-group">
++                                    <button style="float: right" type="button" id="questionAnswer" onclick="answerQuestion({{$question->id}})" class="btn btn-success">Submit Answer</button>
++                                </div>
++                            </div>
++                            <div class="panel-footer">
++
++                                <div class="row">
++                                    <div class="col-md-8">
++                                        <div class="form-group">
++                                            <label for="usr"></label>
++                                            <input type="text"  placeholder="Add a comment..." class="form-control" id="{{$question->id}}_comment">
++                                            <div class="col-md-12" id="{{$question->id}}_load-comments" style="margin-top: 5px">
++                                                <a href="#" onclick="getComments({{$question->id}})">View Comments</a>
++                                            </div>
++                                        </div>
++                                    </div>
++                                    <div class="col-md-4">
++                                        <div class="form-group">
++                                            <label for="usr"></label>
++                                            <button style="margin-top: 18px" id="storeComment" onclick="storeComment({{$question->id}})" type="button" class="btn btn-default">Comment</button>
++                                        </div>
++                                    </div>
++                                </div>
++
++                            </div>
++                        </div>
++                    @endforeach
++                </div>
++
++            </div>
++        </div>
++
+     </div>
+ </div>
+ 
+@@ -146,6 +200,50 @@
+     function askQuestion() {
+         var comment = $('#ask_Question').val();
+         $.post("/api/question", {question: comment}, function(result){
++            var question = '<div class="panel panel-default" id="'+result.id+'_answer_body">\n' +
++                '                            <div class="panel-heading">\n' +
++                '                                <div class="row">\n' +
++                '                                    <div class="col-md-1">\n' +
++                '                                        <img src="#" alt="profile" style=" width: 50px">\n' +
++                '                                    </div>\n' +
++                '                                    <div class="col-md-11">\n' +
++                '                                        <h4 style="margin-left: 5px">'+result.question+'</h4>\n' +
++                '                                    </div>\n' +
++                '\n' +
++                '\n' +
++                '                                </div>\n' +
++                '                            </div>\n' +
++                '                            <div class="panel-body">\n' +
++                '                                <div class="form-group">\n' +
++                '                                    <textarea class="form-control" placeholder="Answer this Question" rows="5" id="answerQuestion_'+result.id+'["></textarea>\n' +
++                '                                </div>\n' +
++                '                                <div class="form-group">\n' +
++                '                                    <button style="float: right" type="button" id="questionAnswer" onclick="answerQuestion('+result.id+')" class="btn btn-success">Submit Answer</button>\n' +
++                '                                </div>\n' +
++                '                            </div>\n' +
++                '                            <div class="panel-footer">\n' +
++                '\n' +
++                '                                <div class="row">\n' +
++                '                                    <div class="col-md-8">\n' +
++                '                                        <div class="form-group">\n' +
++                '                                            <label for="usr"></label>\n' +
++                '                                            <input type="text"  placeholder="Add a comment..." class="form-control" id="'+result.id+'_comment">\n' +
++                '                                            <div class="col-md-12" id="'+result.id+'_load-comments" style="margin-top: 5px">\n' +
++                '                                                <a href="#" onclick="getComments('+result.id+')">View Comments</a>\n' +
++                '                                            </div>\n' +
++                '                                        </div>\n' +
++                '                                    </div>\n' +
++                '                                    <div class="col-md-4">\n' +
++                '                                        <div class="form-group">\n' +
++                '                                            <label for="usr"></label>\n' +
++                '                                            <button style="margin-top: 18px" id="storeComment" onclick="storeComment('+result.id+')" type="button" class="btn btn-default">Comment</button>\n' +
++                '                                        </div>\n' +
++                '                                    </div>\n' +
++                '                                </div>\n' +
++                '\n' +
++                '                            </div>\n' +
++                '                        </div>'
++            $('#answer-body').prepend(question)
+         });
+     }
+ </script>
+@@ -168,7 +266,7 @@
+                         '                    <div class="panel-footer">\n' +
+                         '                    <div class="row"> '    +
+                         '                    <div class="col-md-5">' +
+-                        '                    <button type="button" class="btn btn-primary">Upvote | '+value.upvote+'</button>\n' +
++                        '                    <button type="button" id="upvote_'+value.upvote+'" onclick="upVote('+value.id+')" class="btn btn-primary">Upvote | '+value.upvote+'</button>\n' +
+                        ' <a style="margin-left: 10px" onclick="remove('+value.id+')" href="#">Downvote</a>' +
+                         '                    </div></div>' +
+                         '                    </div>\n' +
+@@ -231,7 +329,209 @@
+     }
+ </script>
+ 
++<script>
++    function answerQuestion(e) {
++        $.post("/api/question/"+e+"/answer", {question_id: e, answer: $('#answerQuestion_'+e).val()}, function(result){
++            $('#'+e+'_answer_body').detach().prependTo('#main-body')
++            activaTab()
++        })
++    }
++
++    function activaTab(){
++        $('.nav-tabs a[href="#home"]').tab('show')
++    }
++</script>
++<script>
++    $(document).ready()
++    {
++        function initMap() {
++            var myLatLng = {lat: 28.6139, lng: 77.2090};
++
++            var chennai = {lat: 13.0827, lng: 80.2707};
++
++            var kol = {lat: 22.5726, lng: 88.3639};
++
++            var ahm = {lat: 23.0225, lng: 72.5714};
++
++            var hyd = {lat: 17.3850, lng: 78.4867};
++
++            var blr = {lat: 12.9716 , lng: 77.5946};
++
++            var selected;
++
++            var map = new google.maps.Map(document.getElementById('map'), {
++                zoom: 4,
++                center: hyd
++            });
++
++            var marker = new google.maps.Marker({
++                position: myLatLng,
++                map: map,
++                title: 'Delhi'
++
++
++            });
++            var marker1 = new google.maps.Marker({
++                position: chennai,
++                map: map,
++                title: 'Chennai'
++            });
++            var marker2 = new google.maps.Marker({
++                position: blr,
++                map: map,
++                title: 'Bangalore'
++            });
++
++            var marker3 = new google.maps.Marker({
++                position: hyd,
++                map: map,
++                title: 'Hyderabad'
++
++            });
++            var marker4 = new google.maps.Marker({
++                position: kol,
++                map: map,
++                title: 'Kolakata'
++
++            });
++
++            var marker5 = new google.maps.Marker({
++                position: ahm,
++                map: map,
++                title: 'Gujrat'
++
++
++            });
++
++            google.maps.event.addListener(marker,'click',function() {
++                selected = marker.getTitle();
++                console.log(selected);
++
++                loadCity(selected);
++
++
++
++            });
++
++            google.maps.event.addListener(marker2,'click',function() {
++                selected = marker2.getTitle();
++                console.log(selected);
++
++                loadCity(selected);
++
++
++            });
++
++            google.maps.event.addListener(marker3,'click',function() {
++                selected = marker3.getTitle();
++                console.log(selected);
++
++                loadCity(selected);
++
++            });
++
++
++            google.maps.event.addListener(marker4,'click',function() {
++                selected = marker4.getTitle();
++                console.log(selected);
++
++                loadCity(selected);
++            });
++
++
++            google.maps.event.addListener(marker5,'click',function() {
++                selected = marker5.getTitle();
++                console.log(selected);
++
++                loadCity(selected);
++            });
++
++            google.maps.event.addListener(marker1,'click',function() {
++                selected = marker1.getTitle();
++                console.log(selected);
++                loadCity(selected);
++            });
++
++        }
++    }
++
++
++    function loadCity(e)
++    {
++        $('#main-body').empty()
++        $.ajax({url: "/api/question/state/"+e, success: function(result){
++            var html = ''
++            if(result)
++            {
++                jQuery.each(result, function (key, value) {
++                    var question = '<div class="panel panel-default">\n' +
++                        '                    <div class="panel-heading">\n' +
++                        '                    <h4>'+ value.question +'</h4>\n' +
++                        '                    </div>\n' +
++                        '                    <div class="panel-body">'+ value.answer +' \n' +
++                        '                         \n' +
++                        '                    </div>\n' +
++                        '                    <div class="panel-footer">\n' +
++                        '                    <div class="row"> '    +
++                        '                    <div class="col-md-5">' +
++                        '                    <button type="button"  id="upvote_'+value.upvote+'" onclick="upVote('+value.id+')" class="btn btn-primary">Upvote | '+value.upvote+'</button>\n' +
++                        ' <a style="margin-left: 10px" onclick="remove('+value.id+')" href="#">Downvote</a>' +
++                        '                    </div></div>' +
++                        '                    </div>\n' +
++                        '<div class="row">\n' +
++                        '                            <div class="col-md-8">\n' +
++                        '                                <div class="form-group">\n' +
++                        '                                    <label for="usr"></label>\n' +
++                        '                                    <input type="text"  placeholder="Add a comment..." class="form-control" id="'+value.id+'_comment">\n' +
++                        '                                    <div class="col-md-12" id="'+value.id+'_load-comments" style="margin-top: 5px">\n' +
++                        '                                        <a href="#" onclick="getComments('+value.id+')">View Comments</a>\n' +
++                        '                                    </div>\n' +
++                        '                                </div>\n' +
++                        '                            </div>\n' +
++                        '                            <div class="col-md-4">\n' +
++                        '                                <div class="form-group">\n' +
++                        '                                <label for="usr"></label>\n' +
++                        '                                <button style="margin-top: 18px" id="storeComment" onclick="storeComment('+value.id+')" type="button" class="btn btn-default">Comment</button>\n' +
++                        '                                </div>\n' +
++                        '                            </div>\n' +
++                        '                        </div>'+
++                        '                    </div>'
++                    html = html + question
++                })
++                $('#main-body').append(html)
++            }
++            else
++            {
++                $('#main-body').append("No questions yet")
++            }
++        }});
++    }
++</script>
++<script>
++    function upVote(question_id)
++    {
++        $.post("/api/question/"+question_id+"/upvote", {question_id: question_id}, function(result){
++            document.getElementById('upvote_'+question_id).innerHTML = 'Upvoted | '+result.votes;
++        })
++    }
++</script>
++
++<script>
++    function bookmark(question_id) {
++        $.post("/api/question/"+question_id+"/bookmark", {question_id: question_id}, function(result){
++            if(resule.bookmarked)
++            {
++                document.getElementById('question_bookmark_'+question_id).src="http://localhost:8800/images/bookmarked.png";
++            }
++            else
++            {
++                document.getElementById('question_bookmark_'+question_id).src="http://localhost:8800/images/bookmark.png";
++            }
++
++
++        })
++    }
++</script>
+ </body>
+-
+ </html>
+ 

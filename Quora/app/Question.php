@@ -11,7 +11,8 @@ class Question extends Model
       'state',
       'topic',
       'answer',
-       'upvote'
+       'upvote',
+        'bookmarked'
     ];
 
     public function comments()

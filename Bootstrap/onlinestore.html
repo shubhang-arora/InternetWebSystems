@@ -9,6 +9,7 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="assets/js/notify.min.js"></script>
   <style>
     .navbar {
       margin-bottom: 50px;
@@ -113,7 +114,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" onclick = "addCategory()"><span class="glyphicon glyphicon-plus"></span> Add Category</a></li>
-        <li><a href="#" data-toggle="modal" data-target="#myModal" onclick = "show_in_cart()"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#myModal" onclick = "show_in_cart()" data-backdrop="static" data-keyboard="false"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
       </ul>
     </div>
   </div>
@@ -123,22 +124,22 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="panel panel-default" onclick = "add_to_cart(0)">
-        <div class="panel-heading">Elon Musk by Ashlee Vance</div>
-        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/elon_musk.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+        <div class="panel-heading">Wings of Fire - Autobiography</div>
+        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="images/apj.jpeg" class="img-responsive" style="width:100%" alt="Image"></a></div>
         <div class="panel-footer">Price - Rs. 454 <button>Add to cart</button></div>
       </div>
     </div>
     <div class="col-sm-4"> 
       <div class="panel panel-default" onclick = "add_to_cart(1)">
-        <div class="panel-heading">Steve Jobs by Walter Issacson</div>
-        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/steve_jobs.jpg" class="img-responsive" style="width: 100%" alt="Image"></a></div>
+        <div class="panel-heading">The Lean startup</div>
+        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="images/TLS.jpeg" class="img-responsive" style="width: 100%" alt="Image"></a></div>
         <div class="panel-footer">Price - Rs. 329 <button>Add to cart</button></div>
       </div>
     </div>
     <div class="col-sm-4"> 
       <div class="panel panel-default" onclick = "add_to_cart(2)">
-        <div class="panel-heading">The Fault in our Stars by John Green</div>
-        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/fault_stars.jpg" class="img-responsive" style="width: 100%" alt="Image"></a></div>
+        <div class="panel-heading">Startup Nation</div>
+        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="images/SUN.jpeg" class="img-responsive" style="width: 100%" alt="Image"></a></div>
         <div class="panel-footer">Price - Rs. 240 <button>Add to cart</button></div>
       </div>
     </div>
@@ -149,8 +150,8 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="panel panel-default" onclick = "add_to_cart(3)">
-        <div class="panel-heading">Angels and Demons by Dan Brown</div>
-        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="Books/angels_demons.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+        <div class="panel-heading">Free Will</div>
+        <div class="panel-body"><a class = "popover_details" href="#" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="GST - N/A"><img class = "images" src="images/FW.jpeg" class="img-responsive" style="width:100%" alt="Image"></a></div>
         <div class="panel-footer">Price - Rs. 189 <button>Add to cart</button></div>
       </div>
     </div>
@@ -173,21 +174,22 @@
 
 <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
+
 			<h4 class="modal-title" style = "font: 100 16px/1.1 'Roboto Condensed', Verdana, sans-serif;">Your Cart</h4>
         </div>
         <div class="modal-body">
 			<table id="myTable">
 				<tr>
 					<th>Name</th>
-					
+                  <th>Image</th>
+                  <th>Dec</th>
 					<th>Qty.</th>
-					
+					<th>Inc</th>
 					<th>Price</th>
 					
 					<th>Total</th>
@@ -215,10 +217,10 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover();   
 });
 
-var booksArray = ["Books/elon_musk.jpg",
-				  "Books/steve_jobs.jpg",
-				  "Books/fault_stars.jpg",
-				  "Books/angels_demons.jpg",
+var booksArray = ["images/apj.jpeg",
+				  "images/TLS.jpeg",
+				  "images/SUN.jpeg",
+				  "images/FW.jpeg",
 				  "Books/secret_nagas.jpg",
 				  "Books/kane_abel.jpg"
 				];
@@ -256,9 +258,9 @@ var speakersArray = ["Speakers/jbl_flip.jpg",
 				    ];
 
 var imageArray = ["books", "laptopsArray", "smartphonesArray", "bagsArray", "speakersArray"];
-var bookHeadings = [ "Elon Musk by Ashlee Vance",
-					 "Steve Jobs by Walter Issacson",
-					 "The Fault in our Stars by John Green",
+var bookHeadings = [ "Wings of Fire ",
+					 "The Lean Startup",
+					 "The Lean Startup",
 					 "Angels and Demons by Dan Brown",
 					 "Secret of the Nagas by Amish Tripathi",
 					 "Kane and Abel by Jeffrey Archer"
@@ -268,10 +270,10 @@ var laptopHeadings = [ "Dell XPS 13",
 					 "Apple Macbook Pro",
 					 "Acer Predator 21x",
 					 "Asus Zenbook Infinity",
-					 "LG Gram",
-					 "HP Spectre"
+					 "Hp OMEN",
+					 "Dell Inspiron"
 					];
-					
+
 var smartphoneHeadings = [ "Samsung Galaxy S8",
 					 "Apple iPhone 7 Plus",
 					 "LG G6",
@@ -312,10 +314,8 @@ var mlaptopPrice = ["Price - Rs. 1,15,000", "Price - Rs. 2,18,990", "Price - Rs.
 var msmartphonePrice = ["Price - Rs. 57,900", "Price - Rs. 67,999", "Price - Rs. 36,990", "Price - Rs. 33,900", "Price - Rs. 39,990", "Price - Rs. 54,000"];
 var mbagPrice = ["Price - Rs. 5,952", "Price - Rs. 8,024", "Price - Rs. 1,250", "Price - Rs. 16,045", "Price - Rs. 11,986", "Price - Rs. 12,899"];
 var mspeakerPrice = ["Price - Rs. 8,999", "Price - Rs. 7,199", "Price - Rs. 16,200", "Price - Rs. 15,399", "Price - Rs. 12,555", "Price - Rs. 19,013"];
-var mlaptopPrices = ["Price - Rs. 115000", "Price - Rs. 218990", "Price - Rs. 577470", "Price - Rs. 64200", "Price - Rs. 83230", "Price - Rs. 54600"];
-var msmartphonePrices = ["Price - Rs. 57900", "Price - Rs. 67999", "Price - Rs. 36990", "Price - Rs. 33900", "Price - Rs. 39990", "Price - Rs. 54000"];
-var mbagPrices = ["Price - Rs. 5952", "Price - Rs. 8024", "Price - Rs. 1250", "Price - Rs. 16045", "Price - Rs. 11986", "Price - Rs. 12899"];
-var mspeakerPrices = ["Price - Rs. 8999", "Price - Rs. 7199", "Price - Rs. 16200", "Price - Rs. 15399", "Price - Rs. 12555", "Price - Rs. 19013"];
+
+
 
 
 var current_category = 0;
@@ -331,6 +331,7 @@ function productDisplay(category)	{
 		switch(category)
 		{
 			case 0: panels[i].src = booksArray[i];
+
 					headings[i].innerHTML = bookHeadings[i];
 					price[i].innerHTML = bookPrice[i];
 					popover[i].setAttribute('data-content','GST - N/A');
@@ -361,13 +362,19 @@ function productDisplay(category)	{
 }
 
 var new_category;
-var counter = 0;
+var counter = 5;
+
+
+var cart = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 function addCategory(){
+
 	new_category = prompt("Please enter a new category:", "Shoes");
 	var category = document.getElementsByClassName('dummyNav');
-	category[counter].innerHTML = new_category;
+	category[counter-5].innerHTML = new_category;
 	counter++;
+	var newCat = [0,0,0,0,0,0];
+	cart = cart.concat(newCat);
 }
 
 function dummy(){
@@ -383,38 +390,84 @@ function dummy(){
 	}
 }
 
-var cart = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
 function add_to_cart(product){
 
+
+    if (current_category == 0)
+    {
+        if (cart[product])
+        {
+            $.notify("Only 1 item allowed per customer", "warn");
+        }
+        else
+        {
+            cart[product]++;
+            $.notify("Item added to Cart", "success");
+        }
+
+    }
 	switch(current_category)
 		{
-			case 0: cart[product]++;
-					alert("Item added to cart!");
-					break;
 			case 1: cart[product + 6]++;
-					alert("Item added to cart!");
+                $.notify("Item added to Cart", "success");
 					break;
 			case 2: cart[product + 12]++;
-					alert("Item added to cart!");
+                $.notify("Item added to Cart", "success");
 					break;
 			case 3: cart[product + 18]++;
-					alert("Item added to cart!");
+                $.notify("Item added to Cart", "success");
 					break;
 			case 4: cart[product + 24]++;
-					alert("Item added to cart!");
+                $.notify("Item added to Cart", "success");
 					break;
 		}
+}
+
+function incProduct(product) {
+    if (cart[product])
+    {
+        var v = Math.floor(i/((cart.length)/5));
+        if(v==0)
+        {
+            $.notify("Only 1 item allowed per customer", "warn");
+        }
+        else
+        {
+            cart[product]++;
+            $.notify('Quantity increased to '+cart[product], "success");
+        }
+
+    }
+    else
+    {
+        $.notify("This product is no longer in cart", "error");
+    }
+}
+
+function decProduct(product) {
+    if(cart[product]<=0)
+    {
+        $.notify("This product is no longer in cart", "error");
+    }
+    else
+    {
+      cart[product]--;
+        $.notify("Quantity decreased to "+cart[product], "success");
+    }
 }
 
 var final_total = 0;
 
 function show_in_cart(){
 
+
 	var table = document.getElementById("myTable");
 	var row;
 	var name;
+	var im;
+	var dec;
 	var qty;
+	var inc;
 	var price;
 	var total;
 	for(var i = 0 ; i < cart.length ; i++)
@@ -423,33 +476,48 @@ function show_in_cart(){
 		{
 			row = table.insertRow(1);
 			name = row.insertCell(0);
-			
-			qty = row.insertCell(1);
-			
-			price = row.insertCell(2);
-			total = row.insertCell(3);
-			
-			var category = Math.floor(i/5);
-			var product = i%5;
+			im = row.insertCell(1);
+			dec = row.insertCell(2);
+			qty = row.insertCell(3);
+			inc = row.insertCell(4);
+			price = row.insertCell(5);
+			total = row.insertCell(6);
+
+			var category = Math.floor(i/((cart.length)/5));
+			var product = i%((cart.length)/5);
+
+
+
 			
 			<!--Name of each product-->
 			switch(category)
 			{
 				case 0: name.innerHTML = bookHeadings[product];
+				console.log('<img src="'+booksArray[product]+'">');
+                        im.innerHTML = '<img style="width: 30px" src="'+booksArray[product]+'">';
 					    break;
+
 				case 1: name.innerHTML = laptopHeadings[product];
+				        im.innerHTML = '<img style="width: 30px" src="'+laptopsArray[product]+'">';
 						break;
 				case 2: name.innerHTML = smartphoneHeadings[product];
+                        im.innerHTML = '<img style="width: 30px" src="'+smartphonesArray[product]+'">';
 						break;
 				case 3: name.innerHTML = bagHeadings[product];
+                        im.innerHTML = '<img style="width: 30px" src="'+bagsArray[product]+'">';
 						break;
 				case 4: name.innerHTML = speakerHeadings[product];
+                        im.innerHTML = '<img style="width: 30px" src="'+speakersArray[product]+'">';
 						break;
 			}
-			
+
+
+
+			dec.innerHTML = '<button onclick="decProduct('+(parseInt(product+(category*6)))+')">-</button>';
 			<!--Print the quantity of each product-->
-			qty.innerHTML = cart[i];
-			
+			qty.innerHTML = '<p id="q'+parseInt(product+(category*6))+'">'+cart[i]+'</p>';
+            inc.innerHTML = '<button onclick="incProduct('+parseInt(product + (category*6))+')">+</button>';
+
 			<!--Price of each product-->
 			switch(category)
 			{
@@ -490,10 +558,12 @@ function show_in_cart(){
 	}
 	row = table.insertRow(-1);
 	name = row.insertCell(0);
-	qty = row.insertCell(1);
-	price = row.insertCell(2);
+	dec = row.insertCell(1);
+	qty = row.insertCell(2);
+	inc = row.insertCell(3);
+	price = row.insertCell(4);
 
-	total = row.insertCell(3);
+	total = row.insertCell(5);
 	if(final_total > 0)
 	{
 		
